@@ -21,6 +21,18 @@
           }
           .link{
             color: aliceblue;
+            text-decoration: none;
+            
+          }
+          .link:hover{
+            color:#185f8b;
+            text-decoration: none;
+          }
+          #search{
+            color:#53a6d8;
+          }
+          #search:hover{
+            color:aliceblue;
           }
         </style>
       </head>
@@ -63,9 +75,7 @@
                             <li><a class="dropdown-item" href="#">All</a></li>
                           </ul>
                         <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                        </svg></button>
+                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search" id="search"></i></button>
                       </div>
                     </form>
                   </li>
@@ -132,40 +142,35 @@
 
         <!-- Footer -->
         <footer id="footer" style="background-color: #53a6d8; padding: 1cm;">
-
-          <div class="footer-newsletter">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-6">
-                  <h4>Our Newsletter</h4>
-                  <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                </div>
-                <div class="col-lg-6">
-                  <form action="" method="post">
-                    <div class="input-group mb-0">
-                      <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
-                      <button class="btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
-                        <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.818l5.724 3.465L8 8.917l1.276.766L15 6.218V5.4a1 1 0 0 0-.53-.882l-6-3.2zM15 7.388l-4.754 2.877L15 13.117v-5.73zm-.035 6.874L8 10.083l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738zM1 13.117l4.754-2.852L1 7.387v5.73zM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2z"/>
-                      </svg></button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-      
           <div class="footer-top">
             <div class="container">
               <div class="row">
-      
+                <div class="col-lg-6 col-md-6 footer-info">
+                  <h3>About CD-R Queen</h3>
+                  <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                  <h4>Follow us</h4>
+                  <div class="social-links mt-3">
+                    <div class="row">
+                      <div class="col-4">
+                        <a href="#" class="container-fluid"><i class="bi bi-twitter">Twitter</i></a> 
+                      </div>
+                      <div class="col-4">
+                        <a href="#" class="container-fluid"><i class="bi bi-facebook" style="color: aliceblue;font-family:Arial, Helvetica, sans-serif; font-style: normal;">Facebook</i></a>
+                      </div>
+                      <div class="col-4">
+                        <a href="#" class="container-fluid"><i class="bi bi-instagram" style="color: aliceblue;font-family:Arial, Helvetica, sans-serif; font-style: normal;">Instagram</i></a>
+                      </div>
+                    </div>
+                  </div> <br>
+                </div>
                 <div class="col-lg-3 col-md-3 footer-links">
                   <h4>Useful links</h4>
-                  <ul style="color: aliceblue;">
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                  <ul style="color: aliceblue; text-decoration: none;">
+                    <li><a class="link" href="#">FAQs</a></li>
+                    <li><a class="link" href="#">About us</a></li>
+                    <li><a class="link" href="#">Services</a></li>
+                    <li><a class="link" href="#">Terms of service</a></li>
+                    <li><a class="link" href="#">Privacy policy</a></li>
                   </ul>
                 </div>
       
@@ -179,19 +184,31 @@
       
                 </div>
       
-                <div class="col-lg-6 col-md-6 footer-info">
-                  <h3>About CD-R Queen</h3>
-                  <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-                  <div class="social-links mt-3">
-                    <a href="#" class="twitter"><i class="bi bi-twitter" style="color: aliceblue;"></i></a>
-                    <a href="#" class="facebook"><i class="bi bi-facebook" style="color: aliceblue;"></i></a>
-                    <a href="#" class="instagram"><i class="bi bi-instagram" style="color: aliceblue;"></i></a>
-                  </div>
-                </div>
+                
       
               </div>
             </div>
           </div>
+          <div class="footer-newsletter">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6">
+                  <h4>Our Newsletter</h4>
+                  <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                  <form action="" method="post">
+                    <div class="input-group mb-0">
+                      <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
+                      <button class="btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                        <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.818l5.724 3.465L8 8.917l1.276.766L15 6.218V5.4a1 1 0 0 0-.53-.882l-6-3.2zM15 7.388l-4.754 2.877L15 13.117v-5.73zm-.035 6.874L8 10.083l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738zM1 13.117l4.754-2.852L1 7.387v5.73zM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2z"/>
+                      </svg></button>
+                </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          
       
           <div class="container">
             <div class="copyright">
