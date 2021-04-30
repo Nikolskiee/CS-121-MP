@@ -38,64 +38,66 @@
       </head>
     <body>
         <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent">
-          <div class="container-fluid" >
-            <a class="navbar-brand" href="#">CD-R Queen</a> <!--Brand Logo/Name goes here -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin: 1% 1% 1% 1%">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse flex-row justify-content-between" id="navbarSupportedContent">
-              <div>
-                <ul class="navbar-nav me-auto mb-0 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Laptops</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Smartphones</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Accessories</a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <ul class="navbar-nav me-auto mb-0 mb-lg-0">
-                  <li class="nav-item">
-                    <form class="d-flex">
-                      <div class="input-group mb-0">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Laptops</a></li>
-                            <li><a class="dropdown-item" href="#">Smartphones</a></li>
-                            <li><a class="dropdown-item" href="#">Accessories</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">All</a></li>
-                          </ul>
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search" id="search"></i></button>
-                      </div>
-                    </form>
-                  </li>
-                  <li class="nav-item">
-                    
-                    <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                  </li>
-                </ul>
+        <div class="sticky-top" >
+          <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255,255,255, 0.60);">
+            <div class="container-fluid" >
+              <a class="navbar-brand" href="#">CD-R Queen</a> <!--Brand Logo/Name goes here -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin: 1% 1% 1% 1%">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse flex-row justify-content-between" id="navbarSupportedContent">
+                <div>
+                  <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Laptops</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Smartphones</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Accessories</a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                    <li class="nav-item">
+                      <form class="d-flex">
+                        <div class="input-group ">
+                          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Laptops</a></li>
+                              <li><a class="dropdown-item" href="#">Smartphones</a></li>
+                              <li><a class="dropdown-item" href="#">Accessories</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">All</a></li>
+                            </ul>
+                          <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search" id="search"></i></button>
+                        </div>
+                      </form>
+                    </li>
+                    <li class="nav-item">
+                      
+                      <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Login</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
 
         <!-- Carousel for Promos -->
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width: 90%; margin: auto; margin-bottom: 5cm;">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width: 90%; margin: auto; margin-top: 2cm; margin-bottom: 2cm;">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
