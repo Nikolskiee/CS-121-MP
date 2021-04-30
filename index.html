@@ -6,6 +6,7 @@
         <meta name ="viewport" content="width=device-width, initial-scale=1.0">
         <title>CD-R Queen</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
         <style>
           .nav-link.active {
@@ -18,11 +19,14 @@
             background-color:rgb(44, 158, 211);
             border-color: white;
           }
+          .link{
+            color: aliceblue;
+          }
         </style>
       </head>
     <body>
         <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:none">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">CD-R Queen</a> <!--Brand Logo/Name goes here -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,7 +91,7 @@
         </nav>
 
         <!-- Carousel for Promos -->
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width: 75%; margin: auto;">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width: 90%; margin: auto; margin-bottom: 5cm;">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -95,14 +99,14 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
-              <img src="files/carousel/promo_laptop.webp" class="d-block w-100" alt="...">
+              <img src="files/carousel/promo_laptops.webp" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Laptops</h5>
                 <p>Some representative placeholder content for the first slide.</p>
               </div>
             </div>
             <div class="carousel-item" data-bs-interval="2000">
-              <img src="files/carousel/promo_smartphone.webp" class="d-block w-100" alt="...">
+              <img src="files/carousel/promo_smartphones.webp" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Smartphones</h5>
                 <p>Some representative placeholder content for the second slide.</p>
@@ -125,6 +129,78 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+
+        <!-- Footer -->
+        <footer id="footer" style="background-color: #53a6d8; padding: 1cm;">
+
+          <div class="footer-newsletter">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6">
+                  <h4>Our Newsletter</h4>
+                  <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                </div>
+                <div class="col-lg-6">
+                  <form action="" method="post">
+                    <div class="input-group mb-0">
+                      <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
+                      <button class="btn btn-light" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                        <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.818l5.724 3.465L8 8.917l1.276.766L15 6.218V5.4a1 1 0 0 0-.53-.882l-6-3.2zM15 7.388l-4.754 2.877L15 13.117v-5.73zm-.035 6.874L8 10.083l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738zM1 13.117l4.754-2.852L1 7.387v5.73zM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2z"/>
+                      </svg></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="footer-top">
+            <div class="container">
+              <div class="row">
+      
+                <div class="col-lg-3 col-md-3 footer-links">
+                  <h4>Useful links</h4>
+                  <ul style="color: aliceblue;">
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Terms of service</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                  </ul>
+                </div>
+      
+                <div class="col-lg-3 col-md-3 footer-contact">
+                  <h4>Contact Us</h4>
+                  <p>
+                    Address <br><br>
+                    <strong>Phone:</strong> +12345678910<br>
+                    <strong>Email:</strong> info@example.com<br>
+                  </p>
+      
+                </div>
+      
+                <div class="col-lg-6 col-md-6 footer-info">
+                  <h3>About CD-R Queen</h3>
+                  <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                  <div class="social-links mt-3">
+                    <a href="#" class="twitter"><i class="bi bi-twitter" style="color: aliceblue;"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook" style="color: aliceblue;"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram" style="color: aliceblue;"></i></a>
+                  </div>
+                </div>
+      
+              </div>
+            </div>
+          </div>
+      
+          <div class="container">
+            <div class="copyright">
+              &copy; Copyright <strong><span></span></strong>. All Rights Reserved
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer -->
+      
     </body>
 
 </html>
