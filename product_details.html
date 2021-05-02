@@ -67,6 +67,10 @@
             outline-color: #185f8b;
             width: 2cm;
           }
+
+          .bi {
+            color: #185f8b;
+          }
           
         </style>
       </head>
@@ -86,7 +90,7 @@
                       <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link  active" aria-current="page" href="#">Laptops</a>
+                      <a class="nav-link" href="#">Laptops</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Smartphones</a>
@@ -219,10 +223,6 @@
                               <th scope="row">Storage</th>
                               <td>512GB PCIe SSD</td>
                             </tr>
-                            <tr>
-                                <th scope="row">Storage</th>
-                                <td>512GB PCIe SSD</td>
-                              </tr>
                               <tr>
                                 <th scope="row">Ports</th>
                                 <td>1 x Thunderbolt 4 USB-C®<br>
@@ -250,6 +250,116 @@
         </div>
     </div>
     <!-- end product -->
+    <!-- Product Reviews -->
+    <div class="row mb-5 d-flex justify-content-center">
+      <div class="card" style="width: 50%;">
+        <div class="card-body">
+          <h5 class="card-title">Rate the Product</h5>
+          <div class="d-flex justify-content-around" style="width:50%; margin:auto">
+
+            <script>
+              function clicked(star){
+                var btn = document.getElementsByClassName("star");
+                var i = 0;
+
+                while (i < star) {
+                  var j = btn[i].getElementsByTagName("i");
+                  j[0].className = "bi bi-star-fill";
+                  i++;
+                }
+
+                while (i < 5) {
+                  var j = btn[i].getElementsByTagName("i");
+                  j[0].className= "bi bi-star";
+                  i++;
+                }
+              }
+            </script>
+            <div class="col-2">
+              <button class="star" style="border:none; background-color:white;" onclick="clicked(1)"><i class="bi bi-star"></i></button>
+            </div>
+            <div class="col-2">
+              <button class="star" style="border:none; background-color:white;" onclick="clicked(2)"><i class="bi bi-star"></i></button>
+            </div>
+            <div class="col-2">
+              <button class="star" style="border:none; background-color:white;" onclick="clicked(3)"><i class="bi bi-star"></i></button>
+            </div>
+            <div class="col-2">
+              <button class="star" style="border:none; background-color:white;" onclick="clicked(4)"><i class="bi bi-star"></i></button>
+            </div>
+            <div class="col-2">
+              <button class="star" style="border:none; background-color:white;" onclick="clicked(5)"><i class="bi bi-star"></i></button>
+            </div>
+          </div>
+          <label for="inputReview" class="form-label">Describe your experience</label>
+          <input type="text" id="inputReview" class="form-control">
+          <div id="passwordHelpBlock" class="form-text" style="text-align:center;">
+            Please refrain using profane words.
+          </div>
+          <div class="d-flex flex-row justify-content-between mb-2">
+            <div>
+              <p><i class="bi bi-person-circle"></i> Juan Dela Cruz</p>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+          <br>
+          <h5>Customer Reviews</h5>
+          <div class="d-flex flex-row justify-content-between">
+            <div>
+              <p><i class="bi bi-person-circle"></i> Nena Corazon</p>
+            </div>
+            <div>
+              <p>4 <i class="bi bi-star-fill"></i> out of 5</p>
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-between mb-2">
+            <p>Good laptop. The performance is snappy, the screen is clear; overall it looks great. However, the box was slightly damaged when I received it.</p>
+          </div>
+          <hr>
+
+          <div class="d-flex flex-row justify-content-between">
+            <div>
+              <p><i class="bi bi-person-circle"></i> Nena Corazon</p>
+            </div>
+            <div>
+              <p>4 <i class="bi bi-star-fill"></i> out of 5</p>
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-between mb-2">
+            <p>Good laptop. The performance is snappy, the screen is clear; overall it looks great. However, the box was slightly damaged when I received it.</p>
+          </div>
+          <hr>
+
+          <div class="d-flex flex-row justify-content-between">
+            <div>
+              <p><i class="bi bi-person-circle"></i> Nena Corazon</p>
+            </div>
+            <div>
+              <p>4 <i class="bi bi-star-fill"></i> out of 5</p>
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-between mb-2">
+            <p>Good laptop. The performance is snappy, the screen is clear; overall it looks great. However, the box was slightly damaged when I received it.</p>
+          </div>
+          <hr>
+
+          <div class="d-flex flex-row justify-content-between">
+            <div>
+              <p><i class="bi bi-person-circle"></i> Nena Corazon</p>
+            </div>
+            <div>
+              <p>4 <i class="bi bi-star-fill"></i> out of 5</p>
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-between mb-2">
+            <p>Good laptop. The performance is snappy, the screen is clear; overall it looks great. However, the box was slightly damaged when I received it.</p>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
 </div>
 
 
