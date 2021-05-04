@@ -174,11 +174,11 @@
                                                         <td>Asus VivoBook S14</td>
                                                         <td>
                                                             <div class="form-group mb-0">
-                                                                <input type="number" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="1">
+                                                                <input type="number" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="1" oninput="displayNewAmount()">
                                                             </div>
                                                         </td>
-                                                        <td>₱99,999.99</td>
-                                                        <td class="text-right">₱99,999.99</td>
+                                                        <td >₱<span id="cartPrc1">99,999.99</span></td>
+                                                        <td class="text-right" >₱<span id="total1">99,999.99</span></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">2</th>
@@ -187,11 +187,11 @@
                                                         <td>Xiaomi Mi Mix</td>
                                                         <td>
                                                             <div class="form-group mb-0">
-                                                                <input type="number" class="form-control cart-qty" name="cartQty2" id="cartQty2" value="1">
+                                                                <input type="number" class="form-control cart-qty" name="cartQty2" id="cartQty2" value="1" oninput="displayNewAmount()">
                                                             </div>
                                                         </td>
-                                                        <td>₱99,999.99</td>
-                                                        <td class="text-right">₱99,999.99</td>
+                                                        <td>₱<span id="cartPrc2">99,999.99</span></td>
+                                                        <td class="text-right">₱<span id="total2">99,999.99</span></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">3</th>
@@ -200,11 +200,11 @@
                                                         <td>Oculus Go</td>
                                                         <td>
                                                             <div class="form-group mb-0">
-                                                                <input type="number" class="form-control cart-qty" name="cartQty3" id="cartQty3" value="1">
+                                                                <input type="number" class="form-control cart-qty" name="cartQty3" id="cartQty3" value="1" oninput="displayNewAmount()">
                                                             </div>
                                                         </td>
-                                                        <td>₱99,999.99</td>
-                                                        <td class="text-right">₱99,999.99</td>
+                                                        <td>₱<span id="cartPrc3">99,999.99</span></td>
+                                                        <td class="text-right">₱<span id="total3">99,999.99</span></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -236,7 +236,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Sub Total :</td>
-                                                                <td>₱299,999.97</td>
+                                                                <td >₱<span id="subtotal">299,999.97</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Shipping :</td>
@@ -248,7 +248,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td class="f-w-7 font-18"><h4>Amount :</h4></td>
-                                                                <td class="f-w-7 font-18"><h4>$300,000.00</h4></td>
+                                                                <td class="f-w-7 font-18"><h4>₱<span id="total">300,000.00</span></h4></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -345,4 +345,20 @@
         </footer>
         <!-- End Footer -->
     </body>
+    <script>
+        float
+        function displayNewAmount(){
+            let total1 = (document.getElementById("cartQty1").value)*(99999.99);
+            let total2 = (document.getElementById("cartQty2").value)*(99999.99);
+            let total3 = (document.getElementById("cartQty3").value)*(99999.99);
+            document.getElementById("total1").innerText = numberWithCommas(total1);
+            document.getElementById("total2").innerText = numberWithCommas(total2);
+            document.getElementById("total3").innerText = numberWithCommas(total3);
+            document.getElementById("subtotal").innerText = numberWithCommas(total1+total2+total3);
+            document.getElementById("total").innerText = numberWithCommas(total1+total2+total3+.03);
+        }
+        function numberWithCommas(x) {
+            return x.toLocaleString('en', {useGrouping:true});
+        }
+    </script>
 </html>
