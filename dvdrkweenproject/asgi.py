@@ -1,5 +1,5 @@
 """
-ASGI config for dvdrkween project.
+ASGI config for dvdrkweenproject project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dvdrkween.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dvdrkweenproject.settings')
 
 application = get_asgi_application()
