@@ -1,0 +1,453 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Laptops - DVD-R Kween</title>
+        <link rel="icon" href ="files/logo/DVD-R_Kween_logo.png">
+        <link rel="stylesheet" href="CSS/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <style>
+            .nav-link.active {
+            background-color:#53a6d8;
+            }
+            .btn {
+            border-color: #53a6d8;
+            }
+            .btn:hover{
+            background-color:#53a6d8;
+            border-color: white;
+            }
+            .link{
+            color: aliceblue;
+            text-decoration: none;
+            }
+            .link:hover{
+            color:#185f8b;
+            text-decoration: none;
+            }
+            #search{
+            color:#53a6d8;
+            }
+            #search:hover{
+            color:aliceblue;
+            }
+            .carousel_paragraph{
+            background-color: rgb(240, 248, 255, 0.5);
+            }
+            .inline-url {
+            color:#53a6d8; 
+            text-decoration:none;
+            }
+            .inline-url:hover {
+            color:#185f8b; 
+            text-decoration: none;
+            }
+            #flexCheckChecked{
+            color: #53a6d8;
+            }
+            #product-name{
+            text-decoration: none;
+            color: #185f8b;
+            font-size: large;
+            font-weight: bold;
+            }
+            #rating{
+            color: #ffc400;
+            }
+            .chkbx:checked{
+            color: #185f8b;
+            background-color: #185f8b;
+            outline-color: #185f8b;
+            width: 2cm;
+            }
+            .bi {
+            color: #185f8b;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <div class="sticky-top" >
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255,255,255, 0.60);">
+                <div class="container-fluid" >
+                    <a class="navbar-brand" href="index.html"><img src="files/logo/DVD-R_Kween_logo.png" style="height: 2em;"></a> <!--Brand Logo/Name goes here -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin: 1% 1% 1% 1%">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse flex-row justify-content-between" id="navbarSupportedContent">
+                        <div>
+                            <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="laptops.html">Laptops</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="smartphones.html">Smartphones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="accessories.html">Accessories</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+                                <li class="nav-item">
+                                    <form class="d-flex">
+                                        <div class="input-group ">
+                                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Laptops</a></li>
+                                                <li><a class="dropdown-item" href="#">Smartphones</a></li>
+                                                <li><a class="dropdown-item" href="#">Accessories</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">All</a></li>
+                                            </ul>
+                                            <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                                            <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search" id="search"></i></button>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="cart.html">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                        </svg>
+                                        Cart
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="login.html">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                        </svg>
+                                        Login
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Product Details -->
+        <main class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row p-5 overflow-auto">
+            <div class="row flex-grow-sm-1 flex-grow-0">
+                <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 pb-sm-0 pb-3" style="height: 10cm;">
+                    <div class="bg-light border rounded-3 p-2 h-200">
+                        <h6 class="d-none d-sm-block text-muted">Brand</h6>
+                        <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Asus
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Acer
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Lenovo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Other
+                                </label>
+                            </div>
+                        </ul>
+                        <h6 class="d-none d-sm-block text-muted">Processor</h6>
+                        <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Intel
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                AMD
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Other
+                                </label>
+                            </div>
+                        </ul>
+                        <h6 class="d-none d-sm-block text-muted">Price</h6>
+                        <div class="input-group mb-3 p-1 ">
+                            <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                            <span class="input-group-text">to</span>
+                            <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                            <button type="button" class="btn btn-outline-primary">Go</button>
+                        </div>
+                        <h6 class="d-none d-sm-block text-muted">RAM</h6>
+                        <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                ≤ 4GB
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                6GB
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                8GB
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                12GB
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                ≥16GB
+                                </label>
+                            </div>
+                        </ul>
+                        <h6 class="d-none d-sm-block text-muted">Operating System</h6>
+                        <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Windows
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Mac OS
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Chrome OS
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Android
+                                </label>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col overflow-auto h-100">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="products/laptop_sample.jfif" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="product_details.html" class="stretched-link" id="product-name">Asus VivoBook S14 S433EA-AM214TS</a>
+                                    <h5 href=""class="card-title">49,999.50</h5>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-half" id="rating"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="products/macbook_pro.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="product_details.html" class="stretched-link" id="product-name">Macbook Pro</a>
+                                    <h5 class="card-title">59,999.00</h5>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="products/lenovo_ideapad.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="product_details.html" class="stretched-link" id="product-name">Lenovo Ideapad</a>
+                                    <h5 class="card-title">47,258.00</h5>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="products/acer_inspire.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="product_details.html" class="stretched-link" id="product-name">Acer Inspire</a>
+                                    <h5 class="card-title">25,499.99</h5>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="products/acer_chromebook.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="product_details.html" class="stretched-link" id="product-name">Acer Chromebook</a>
+                                    <h5 class="card-title">24,999.00</h5>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="products/samsung_75.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="product_details.html" class="stretched-link" id="product-name">Samsung 75</a>
+                                    <h5 class="card-title">39,999.99</h5>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="products/dell_laptop.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="product_details.html" class="stretched-link" id="product-name">Dell Inspiron</a>
+                                    <h5 class="card-title">37,999.00</h5>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                    <i class="bi bi-star-fill" id="rating"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav aria-label="...">
+                        <ul class="pagination justify-content-center" >
+                            <li class="page-item">
+                                <a class="page-link" style="color: #53a6d8;" href="#">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"aria-current="page">
+                                <span class="page-link" style="background-color: #53a6d8; outline: #53a6d8;">2</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" style="color: #53a6d8;" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer id="footer" style="background-color: #53a6d8; padding: 1cm;">
+            <div class="footer-top">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-lg-6 col-md-6 footer-info">
+                            <h3>DVD-R Kween</h3>
+                            <p style="color: aliceblue;">An online gadget shop for your everyday needs.</p>
+                            <h4>Follow us</h4>
+                            <div class="social-links mt-3">
+                                <div class="row">
+                                    <div class="col-4 d-flex justify-content-center">
+                                        <a href="#" class="link">Twitter <i class="bi bi-twitter"></i></a> 
+                                    </div>
+                                    <div class="col-4 d-flex justify-content-center">
+                                        <a href="#" class="link">Facebook <i class="bi bi-facebook"></i></a>
+                                    </div>
+                                    <div class="col-4 d-flex justify-content-center">
+                                        <a href="#" class="link">Instagram <i class="bi bi-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col-lg-3 col-md-3 footer-links">
+                            <h4>Useful links</h4>
+                            <ul style="color: aliceblue; text-decoration: none;">
+                                <li><a class="link" href="#">FAQs</a></li>
+                                <li><a class="link" href="#">About us</a></li>
+                                <li><a class="link" href="#">Services</a></li>
+                                <li><a class="link" href="#">Terms of service</a></li>
+                                <li><a class="link" href="#">Privacy policy</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-3 footer-contact">
+                            <h4>Contact Us</h4>
+                            <p style="color: aliceblue;">
+                                College of Arts and Sciences, University of the Philippines Manila, Padre Faura St., Ermita, Manila, Metro Manila <br><br>
+                                <strong>Phone:</strong> +63 (02) 147 3698<br>
+                                <strong>Email:</strong> contact@dvdrkween.com<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Our Newsletter</h4>
+                            <p style="color: aliceblue ;">Subscribe to our newsletter to receive important updates.</p>
+                            <form action="" method="post">
+                                <div class="input-group mb-0">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
+                                    <button class="btn btn-light" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-envelope-open" class="search" viewBox="0 0 16 16">
+                                            <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.818l5.724 3.465L8 8.917l1.276.766L15 6.218V5.4a1 1 0 0 0-.53-.882l-6-3.2zM15 7.388l-4.754 2.877L15 13.117v-5.73zm-.035 6.874L8 10.083l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738zM1 13.117l4.754-2.852L1 7.387v5.73zM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <br>
+                <div class="copyright d-flex justify-content-center" style="color: aliceblue;">
+                    &copy; 2021 DVD-R Kween<strong><span></span></strong>. All Rights Reserved
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </body>
+</html>
