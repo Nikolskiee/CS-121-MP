@@ -19,5 +19,10 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('laptops', views.laptops, name="laptops")
+    path('laptops/', views.laptops, name="laptops"),
+    path('smartphones/', views.smartphones, name="smartphones"),
+    path('accessories/', views.accessories, name="accessories"),
+    path('cart/', views.cart, name="cart"),
+    path('login/', views.login, name="login"),
+    path('signup/', views.signup, name="signup")
 ]
