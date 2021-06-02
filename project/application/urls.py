@@ -24,5 +24,7 @@ urlpatterns = [
     path('accessories/', views.accessories, name="accessories"),
     path('cart/', views.cart, name="cart"),
     path('login/', views.login, name="login"),
-    path('signup/', views.signup, name="signup")
+    path('signup/', views.signup, name="signup"),
+    path('payment/card', views.card, name="card"),
+    path('payment/cod', views.cod, name='cod')
 ]

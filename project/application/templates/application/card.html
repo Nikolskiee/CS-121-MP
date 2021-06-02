@@ -1,0 +1,76 @@
+{% extends 'application/navfoot.html' %}
+{% load static %}
+
+{% block content %} 
+
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
+<div class="d-flex justify-content-center mb-4">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title" style="text-align:center;">Card Payment</h2>
+                <br>
+                <div class="row g-2 mb-3">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="cardholdername" placeholder="Cardholder's Name">
+                            <label for="cardholdername">
+                                Full Name
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-3">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="cardnumber" placeholder="Card Number">
+                            <label for="cardnumber">
+                                Card Number
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-3">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="number" min="1" max="12" class="form-control" id="cardexpmonth" placeholder="Month">
+                            <label for="cardholdername">
+                                MM
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="number" min="2021" class="form-control" id="cardexpyear" placeholder="Year">
+                            <label for="cardholdername">
+                                YYYY
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="cardccv" placeholder="CCV">
+                            <label for="cardccv">
+                                CCV
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 mb-3">
+                    <div class="col-md" style="text-align:center;">
+                        <button type="submit" class="btn btn-primary" id="paybtn">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}  

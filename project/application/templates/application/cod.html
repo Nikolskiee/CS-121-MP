@@ -1,0 +1,33 @@
+{% extends 'application/navfoot.html' %}
+{% load static %} 
+
+{% block content %}
+<div class="container p-5">
+    <div class="card m-b-30" style="width: 80%; margin: auto;">
+        <div class="card-header">
+            <h5 class="card-title">Cash on Delivery</h5>
+        </div>
+        <div class="container p-5">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Province</span>
+                <input type="text" class="form-control" placeholder="Province" value="Batangas" aria-label="Province" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Municipality</span>
+                <input type="text" class="form-control" placeholder="Municipality" value="Nasugbu" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Barangay</span>
+                <input type="text" class="form-control" placeholder="Barangay" value="Barangay Calayo" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">House No. and Street</span>
+                <input type="text" class="form-control" placeholder="House #, Street Name" value="123, Main Street" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <br>
+            <button type="button" class="btn">Proceed</button>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

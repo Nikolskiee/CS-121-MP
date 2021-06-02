@@ -117,7 +117,9 @@
                                                         </tbody>
                                                     </table>
                                                     <div class="cart-footer text-right">
-                                                        <a href="#" class="btn my-1" style="outline-color: #53a6d8;">Submit Order<i class="ri-arrow-right-line ml-2"></i></a>
+                                                        <h3>Proceed to Payment</h3>
+                                                        <a href="{% url 'card' %}" class="btn my-1" style="outline-color: #53a6d8;"><i class="bi bi-credit-card-2-back"></i> Card</a>
+                                                        <a href="{% url 'cod' %}" class="btn my-1" style="outline-color: #53a6d8;"><i class="bi bi-cash-coin"></i> Cash On Delivery</a>
                                                     </div>
                                                 </div>
                                             </div>

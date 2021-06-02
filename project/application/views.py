@@ -22,3 +22,9 @@ def login(request):
 
 def signup(request):
     return render(request, 'application/signup.html')
+
+def card(request):
+    return render(request, 'application/card.html')
+
+def cod(request):
+    return render(request, 'application/cod.html')
