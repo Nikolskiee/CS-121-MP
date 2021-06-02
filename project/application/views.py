@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, 'application/index.html')
+
+def laptops(request):
+    return render(request, 'application/laptops.html')
