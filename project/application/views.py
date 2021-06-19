@@ -28,3 +28,9 @@ def card(request):
 
 def cod(request):
     return render(request, 'application/cod.html')
+
+def terms(request):
+    return render(request, 'application/terms.html')
+
+def privacy(request):
+    return render(request, 'application/privacy.html')
