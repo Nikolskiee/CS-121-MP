@@ -34,3 +34,6 @@ def terms(request):
 
 def privacy(request):
     return render(request, 'application/privacy.html')
+
+def about(request):
+    return render(request, 'application/about.html')

@@ -1,0 +1,25 @@
+{% extends 'application/navfoot.html' %}
+{% load static %} 
+
+{% block content %}
+<title>DVD-R Kween - About</title>
+<div class="container p-5">
+    <div class="d-flex justify-content-center mb-3">
+        <img style="width:25%" src="{% static 'application/files/logo/DVD-R_Kween_logo.png' %}"></img>
+    </div>
+    <h1 style="text-align: center">DVD-R Kween</h1>
+    <div class="d-flex justify-content-center mb-0">
+        <p>
+            An online gadget shop for your daily needs.
+        </p>
+    </div>
+    <hr>
+
+    <div class="col-md" style="width: 75%; margin: auto">
+        <p>
+            Founded in 2021, DVD-R Kween is the leading online tech shop across Teyvat that sells various gadgets: laptops, smartphones and accessories. Today, we have the largest selection of brands and by 2030, we aim to serve 100 million customers. DVD-R Kween is currently the regional flagship of the Liyue Qixing backed by the most exalted one in the Liyue, Ningguang.
+        </p>
+    </div>
+</div>
+
+{% endblock content %}

@@ -28,5 +28,6 @@ urlpatterns = [
     path('payment/card', views.card, name="card"),
     path('payment/cod', views.cod, name='cod'),
     path('terms/', views.terms, name='terms'),
-    path('privacy/', views.privacy, name='privacy')
+    path('privacy/', views.privacy, name='privacy'),
+    path('about/', views.about, name='about')
 ]
