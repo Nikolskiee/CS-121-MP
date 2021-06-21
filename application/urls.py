@@ -29,5 +29,6 @@ urlpatterns = [
     path('payment/cod', views.cod, name='cod'),
     path('terms/', views.terms, name='terms'),
     path('privacy/', views.privacy, name='privacy'),
-    path('about/', views.about, name='about')
+    path('about/', views.about, name='about'),
+    path('details/<str:pk>/', views.details, name='details')
 ]

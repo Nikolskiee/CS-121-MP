@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
@@ -6,7 +7,9 @@ def home(request):
     return render(request, 'application/index.html')
 
 def laptops(request):
-    return render(request, 'application/laptops.html')
+    laptops = Laptop.objects.all()
+    data = { 'laptops': laptops }
+    return render(request, 'application/laptops.html', data)
 
 def smartphones(request):
     return render(request, 'application/smartphones.html')
@@ -37,3 +40,8 @@ def privacy(request):
 
 def about(request):
     return render(request, 'application/about.html')
+
+def details(request, pk):
+    product = Product.objects.get(id=pk)
+    data = { 'product': product}
+    return render(request, 'application/product_details.html', data)
