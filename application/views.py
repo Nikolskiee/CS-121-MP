@@ -12,10 +12,14 @@ def laptops(request):
     return render(request, 'application/laptops.html', data)
 
 def smartphones(request):
-    return render(request, 'application/smartphones.html')
+    smartphones = Smartphone.objects.all()
+    data = { 'smartphones' : smartphones }
+    return render(request, 'application/smartphones.html', data)
 
 def accessories(request):
-    return render(request, 'application/accessories.html')
+    accessories = Accessories.objects.all()
+    data = { 'accessories' : accessories }
+    return render(request, 'application/accessories.html', data)
 
 def cart(request):
     return render(request, 'application/cart.html')
@@ -41,14 +45,26 @@ def privacy(request):
 def about(request):
     return render(request, 'application/about.html')
 
-def details(request, pk):
+def laptopdetails(request, pk):
     if Laptop.objects.get(id=pk) is not None:
         product = Laptop.objects.get(id=pk)
-    elif Smartphone.objects.get(id=pk) is not None:
-        product = Smartphone.objects.get(id=pk)
-    elif Accessories.objects.get(id=pk) is not None:
-        product = Accessories.objects.get(id=pk)
     else:
         product = Product.objects.get(id=pk)  
+    data = { 'product': product}
+    return render(request, 'application/product_details.html', data)
+
+def smartphonedetails(request, pk):
+    if Smartphone.objects.get(id=pk) is not None:
+        product = Smartphone.objects.get(id=pk)
+    else:
+        product = Product.objects.get(id=pk)
+    data = { 'product': product}
+    return render(request, 'application/product_details.html', data)
+
+def accessoriesdetails(request, pk):
+    if Accessories.objects.get(id=pk) is not None:
+        product = Accessories.objects.get(id=pk)
+    else:
+        product = Product.objects.get(id=pk)
     data = { 'product': product}
     return render(request, 'application/product_details.html', data)

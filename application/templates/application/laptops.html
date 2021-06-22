@@ -135,7 +135,7 @@
                     <div class="card h-100">
                         <img src="{{laptop.image.url}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <a href="{% url 'details' laptop.id %}" class="stretched-link" id="product-name">{{laptop.name}}</a>
+                            <a href="{% url 'laptopdetails' laptop.id %}" class="stretched-link" id="product-name">{{laptop.name}}</a>
                             <h5 href=""class="card-title">₱ {{laptop.price}}</h5>
                             <i class="bi bi-star-fill" id="rating"></i>
                             <i class="bi bi-star-fill" id="rating"></i>
@@ -150,125 +150,6 @@
                 
             </div>
         </div>
-
-        <!---
-        <div class="col overflow-auto h-100">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/laptop_sample.jfif" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="product_details.html" class="stretched-link" id="product-name">Asus VivoBook S14 S433EA-AM214TS</a>
-                            <h5 href=""class="card-title">49,999.50</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-half" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/macbook_pro.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="product_details.html" class="stretched-link" id="product-name">Macbook Pro</a>
-                            <h5 class="card-title">59,999.00</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/lenovo_ideapad.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="product_details.html" class="stretched-link" id="product-name">Lenovo Ideapad</a>
-                            <h5 class="card-title">47,258.00</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/acer_inspire.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="product_details.html" class="stretched-link" id="product-name">Acer Inspire</a>
-                            <h5 class="card-title">25,499.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/acer_chromebook.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="product_details.html" class="stretched-link" id="product-name">Acer Chromebook</a>
-                            <h5 class="card-title">24,999.00</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/samsung_75.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="product_details.html" class="stretched-link" id="product-name">Samsung 75</a>
-                            <h5 class="card-title">39,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/dell_laptop.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="product_details.html" class="stretched-link" id="product-name">Dell Inspiron</a>
-                            <h5 class="card-title">37,999.00</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <nav aria-label="...">
-                <ul class="pagination justify-content-center" >
-                    <li class="page-item">
-                        <a class="page-link" style="color: #53a6d8;" href="#">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"aria-current="page">
-                        <span class="page-link" style="background-color: #53a6d8; outline: #53a6d8;">2</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" style="color: #53a6d8;" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div> --->
     </div>
 </main>
 

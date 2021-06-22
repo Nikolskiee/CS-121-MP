@@ -67,12 +67,13 @@
         </div>
         <div class="col overflow-auto h-100">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for smartphone in smartphones %}
                 <div class="col">
                     <div class="card h-100">
-                        <img src="products/asus_zenfone.jpg" class="card-img-top" alt="...">
+                        <img src="{{smartphone.image.url}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Asus Zenfone</a>
-                            <h5 class="card-title">13,999.99</h5>
+                            <a href="{% url 'smartphonedetails' smartphone.id %}" class="stretched-link" id="product-name">{{smartphone.name}}</a>
+                            <h5 class="card-title">{{smartphone.price}}</h5>
                             <i class="bi bi-star-fill" id="rating"></i>
                             <i class="bi bi-star-fill" id="rating"></i>
                             <i class="bi bi-star-fill" id="rating"></i>
@@ -81,106 +82,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/smartphone_sample.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Xiaomi MI Mix</a>
-                            <h5 class="card-title">29,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/iphone_12.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Iphone 12</a>
-                            <h5 class="card-title">79,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/realme_7.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Realme 7</a>
-                            <h5 class="card-title">11,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/vivo_v20.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Vivo V20</a>
-                            <h5 class="card-title">11,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/oppo_a12.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Oppo A12</a>
-                            <h5 class="card-title">10,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/huaweii_p30.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Huaweii P30</a>
-                            <h5 class="card-title">29,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <nav aria-label="...">
-                <ul class="pagination justify-content-center" >
-                    <li class="page-item">
-                        <a class="page-link" style="color: #53a6d8;" href="#">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"aria-current="page">
-                        <span class="page-link" style="background-color: #53a6d8; outline: #53a6d8;">2</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" style="color: #53a6d8;" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+                {% endfor %}
+            </div> 
         </div>
     </div>
 </main>

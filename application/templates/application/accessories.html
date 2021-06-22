@@ -96,12 +96,13 @@
         </div>
         <div class="col overflow-auto h-100">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for accessory in accessories %}
                 <div class="col">
                     <div class="card h-100">
-                        <img src="products/accessories_sample.jpg" class="card-img-top" alt="...">
+                        <img src="{{accessory.image.url}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Oculus Go</a>
-                            <h5 class="card-title">99,999.99</h5>
+                            <a href="{% url 'accessoriesdetails' accessory.id %}" class="stretched-link" id="product-name">{{accessory.name}}</a>
+                            <h5 class="card-title">{{accessory.price}}</h5>
                             <i class="bi bi-star-fill" id="rating"></i>
                             <i class="bi bi-star-fill" id="rating"></i>
                             <i class="bi bi-star-fill" id="rating"></i>
@@ -110,106 +111,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/jbl_boombox.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">JBL Boombox</a>
-                            <h5 class="card-title">3,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/samsung_level.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">Samsung Leven On</a>
-                            <h5 class="card-title">2,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/usb_3.1_typec.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">USB 3.1 Type C Cable</a>
-                            <h5 class="card-title">999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/logitech_c615.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">LogiTech C615 HD Camera</a>
-                            <h5 class="card-title">999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/microphone.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">USB Microphone</a>
-                            <h5 class="card-title">250.00</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="products/asus_rtax56u.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="stretched-link" id="product-name">ASUS RT AX56U</a>
-                            <h5 class="card-title">11,999.99</h5>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                            <i class="bi bi-star-fill" id="rating"></i>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-            <nav aria-label="...">
-                <ul class="pagination justify-content-center" >
-                    <li class="page-item">
-                        <a class="page-link" style="color: #53a6d8;" href="#">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"aria-current="page">
-                        <span class="page-link" style="background-color: #53a6d8; outline: #53a6d8;">2</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" style="color: #53a6d8;" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 </main>
