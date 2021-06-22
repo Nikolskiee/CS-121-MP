@@ -114,4 +114,7 @@ class Cart(models.Model):
 
     quantity = models.IntegerField(null = True, validators = [MinValueValidator(1)])
 
+    def set_quantity(input):
+        quantity = input
+
 

@@ -35,12 +35,15 @@
                                                     {% for c in cart %}
 
                                                     <tr>
-                                                        <td><a href="#" class="text-danger "><i class="bi bi-trash-fill" style="color: #ce1d10;"></i></i></a></td>
+                                                        <td><a href="{% url 'removecart' c.item.id %}" class="text-danger "><i class="bi bi-trash-fill" style="color: #ce1d10;"></i></i></a></td>
                                                         <td><img src="{{c.item.product.image.url}}" class="img-fluid" width="35" alt="product"></td>
                                                         <td>{{c.item.product.name}}</td>
                                                         <td>
                                                             <div class="form-group mb-0">
-                                                                <input type="number" min="0" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="{{c.item.quantity}}" oninput="displayNewAmount()">
+                                                                <!---<input type="number" min="1" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="{{c.item.quantity}}" oninput="displayNewAmount()" onclick="{{c.set_quantity }}">--->
+                                                                <form action='' method='post'>
+                                                                    <input type="number" min="1" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="{{c.item.quantity}}" oninput="displayNewAmount()">
+                                                                </form>
                                                             </div>
                                                         </td>
                                                         <td >₱<span id="cartPrc1">{{c.item.product.price}}</span></td>
