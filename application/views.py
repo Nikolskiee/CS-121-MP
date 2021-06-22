@@ -32,15 +32,17 @@ def accessories(request):
 def cart(request):
     items = Cart.objects.filter(user = request.user).order_by('id')
     cart = []
-    total = 0
+    subtotal = 0
     count = 0
     for item in items:
-        total = total + (item.quantity * item.product.price)
+        subtotal = subtotal + (item.quantity * item.product.price)
         count = count + item.quantity
         form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
         cart.append({"item" : item, "form" : form})
     
-    data = {"cart" : cart, "total" : total, "count" : count}
+    shipping = round(0.05 * float(subtotal), 2)
+    total = round(shipping + float(subtotal), 2)
+    data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping}
     return render(request, 'application/cart.html', data)
 
 @login_required(login_url='/login')

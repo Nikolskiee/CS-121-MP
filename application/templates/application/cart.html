@@ -22,8 +22,7 @@
                                             <table class="table table-borderless">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col"> </th>
+                                                        <th scope="col">Action</th>
                                                         <th scope="col">Photo</th>
                                                         <th scope="col">Product</th>
                                                         <th scope="col">Qty</th>
@@ -32,10 +31,10 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                    
                                                     {% for c in cart %}
 
                                                     <tr>
-                                                        <th scope="row justify-content-center">1</th>
                                                         <td><a href="#" class="text-danger "><i class="bi bi-trash-fill" style="color: #ce1d10;"></i></i></a></td>
                                                         <td><img src="{{c.item.product.image.url}}" class="img-fluid" width="35" alt="product"></td>
                                                         <td>{{c.item.product.name}}</td>
@@ -45,10 +44,11 @@
                                                             </div>
                                                         </td>
                                                         <td >₱<span id="cartPrc1">{{c.item.product.price}}</span></td>
-                                                        <td class="text-right" >₱<span id="total1"></span></td>
+                                                        <td class="text-right" >₱<span id="total1">{% widthratio  c.item.product.price 1 c.item.quantity %}</span></td>
                                                     </tr>
 
                                                     {% endfor %}
+                                                    
                                                     
                                                 </tbody>
                                             </table>
@@ -56,42 +56,28 @@
                                     </div>
                                     <div class="cart-body">
                                         <div class="row">
-                                            <div class="col-md-12 order-2 order-lg-1 col-lg-5 col-xl-6">
-                                                <div class="order-note">
-                                                    <div>
-                                                        <h6>Address</h6>
-                                                        <p>123, Main Street, Brgy. Calayo, Nasugbu, Batangas, Philippines</p>
-                                                    </div>
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label for="specialNotes">Special Note for this order:</label>
-                                                            <textarea class="form-control" name="specialNotes" id="specialNotes" rows="3" placeholder="Message here"></textarea>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
                                             <div class="col-md-12 order-1 order-lg-2 col-lg-7 col-xl-6">
                                                 <div class="order-total table-responsive ">
                                                     <table class="table table-borderless text-right">
                                                         <tbody>
                                                             <tr>
                                                                 <td>Number of Items: </td>
-                                                                <td><span id="qty">3</span></td>
+                                                                <td><span id="qty">{{count}}</span></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Sub Total :</td>
-                                                                <td >₱<span id="subtotal">299,999.97</span></td>
+                                                                <td>Subtotal :</td>
+                                                                <td >₱<span id="subtotal">{{subtotal}}</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Shipping :</td>
-                                                                <td>₱0.00</td>
+                                                                <td>{{shipping}} (5% of Subtotal)</td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="f-w-7 font-18">
                                                                     <h4>Amount :</h4>
                                                                 </td>
                                                                 <td class="f-w-7 font-18">
-                                                                    <h4>₱<span id="total">300,000.00</span></h4>
+                                                                    <h4>₱<span id="total">{{total}}</span></h4>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
