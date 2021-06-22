@@ -107,6 +107,8 @@ def smartphonedetails(request, pk):
     else:
         product = Product.objects.get(id=pk)
     data = { 'product': product}
+    form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
+    data["form"] = form
     return render(request, 'application/product_details.html', data)
 
 def accessoriesdetails(request, pk):
@@ -115,6 +117,8 @@ def accessoriesdetails(request, pk):
     else:
         product = Product.objects.get(id=pk)
     data = { 'product': product}
+    form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
+    data["form"] = form
     return render(request, 'application/product_details.html', data)
 
 def signup(request):
