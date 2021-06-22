@@ -10,35 +10,53 @@
             <div class="card-body">
                 <h2 class="card-title" style="text-align:center;">Login</h2>
                 <br>
-                <div class="row g-2 mb-3">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="username" placeholder="username">
-                            <label for="username">
-                                <i class="bi bi-person-circle"></i>
-                                Username
-                            </label>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row g-2 mb-3">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="text" name="username" class="form-control" id="username" placeholder="username">
+                                <label for="username">
+                                    <i class="bi bi-person-circle"></i>
+                                    Username
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row g-2 mb-3">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
-                                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-                                </svg>
-                                Password
-                            </label>
+                    <div class="row g-2 mb-3">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <label for="floatingPassword">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                                    </svg>
+                                    Password
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row g-2 mb-3">
-                    <div class="col-md" style="text-align:center;">
-                        <a type="submit" class="btn btn-primary" id="login_btn" href="index.html" role="button">Login</a>
+                    {% for message in messages %}
+                            {% if 'success' == message.tags %}
+                                <!-- Alert Box -->
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Success!</strong> {{message | striptags}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% else %}
+                                <!-- Alert Box -->
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error!</strong> {{message | striptags}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endif %}
+                    {% endfor %}
+                    <div class="row g-2 mb-3">
+                        <div class="col-md" style="text-align:center;">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <p>No account yet? <a class="inline-url" href="{% url 'signup' %}">Sign up</a>.</p>

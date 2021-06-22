@@ -10,83 +10,104 @@
             <div class="card-body">
                 <h2 class="card-title" style="text-align:center;">Create an Account</h2>
                 <br>
-                <div class="row g-2 mb-3">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="FirstName" placeholder="First Name">
-                            <label for="FirstName">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                </svg>
-                                First Name
-                            </label>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row g-2 mb-3">
+                        <div class="col-md">
+                            <div class="form-floating mb-1">
+                                {{form.first_name}}
+                                <label for="floatingInput">
+                                    <i class="bi bi-person-dash-fill"></i>
+                                    First Name
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating mb-1">
+                                {{form.last_name}}
+                                <label for="floatingInput">
+                                    <i class="bi bi-person-plus-fill"></i>
+                                    Last Name
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="LastName" placeholder="Last Name">
-                            <label for="FirstName">Last Name</label>
+                    <div class="row g-2 mb-1">
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                {{form.email}}
+                                <label for="floatingInput">
+                                    <i class="bi bi-envelope-fill"></i>
+                                    Email
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row g-2 mb-3">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="email" class="form-control" id="emailAdd" placeholder="First Name">
-                            <label for="emailAdd">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
-                                </svg>
-                                Email
-                            </label>
+                    <div class="row g-2 mb-1" style="text-align:center">
+                        <p>
+                            An email will be sent to you after you signup.
+                        </p>
+                    </div>
+                    <div class="row g-2 mb-1">
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                {{form.username}}
+                                <label for="floatingInput">
+                                    <i class="bi bi-person-circle"></i>
+                                    Username
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <p style="text-align:center; color:gray;">A verification email will be sent to you after you sign up.</p>
-                <div class="row g-2 mb-3">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="username" placeholder="username">
-                            <label for="username">
-                                <i class="bi bi-person-circle"></i>
-                                Username
-                            </label>
+                    <div class="row g-2 mb-1">
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                {{form.password1}}
+                                <label for="floatingInput">
+                                    <i class="bi bi-lock-fill"></i>
+                                    Password
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                {{form.password2}}
+                                <label for="floatingInput">
+                                    <i class="bi bi-shield-lock-fill"></i>
+                                    Confirm Password
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-1" style="text-align:center">
+                            <p>
+                                Your password must be at least 8 characters long.
+                            </p>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="cl-mido">
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">I agree with the <a href="{% url 'terms' %}" class="inline-url">Terms and Conditions</a>.</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row g-2 mb-3">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="pword" placeholder="First Name">
-                            <label for="pword">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
-                                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-                                </svg>
-                                Password
-                            </label>
+
+                    {% if form.errors %}
+                            {% for key, value in form.errors.items %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Error!</strong> {{value | striptags}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                    {% endif %}
+                    
+                    <div class="row g-2 mb-3">
+                        <div class="col-md" style="text-align:center;">
+                            <button type="submit" class="btn btn-primary" id="signup_btn">Sign Up</button>
                         </div>
                     </div>
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="cpword" placeholder="First Name">
-                            <label for="cpword">Confirm Password</label>
-                        </div>
-                    </div>
-                </div>
-                <p style="text-align:center; color:gray;">Your password must be at least 8 characters.</p>
-                <div class="row g-2 mb-3">
-                    <div class="cl-mido">
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">I agree with the <a href="{% url 'terms' %}">Terms and Conditions</a>.</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-2 mb-3">
-                    <div class="col-md" style="text-align:center;">
-                        <button type="submit" class="btn btn-primary" id="signup_btn">Sign Up</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         <p>Already have an account? <a class="inline-url" href="{% url 'login' %}">Login</a>.</p>

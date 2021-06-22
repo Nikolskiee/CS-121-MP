@@ -1,5 +1,12 @@
-from django.shortcuts import render
+from django.http.response import HttpResponse
+from django.shortcuts import render, redirect
 from .models import *
+from .forms import *
+from django.http import HttpResponse
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -24,11 +31,21 @@ def accessories(request):
 def cart(request):
     return render(request, 'application/cart.html')
 
-def login(request):
-    return render(request, 'application/login.html')
+def signin(request):
+    if(request.method == "POST"):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-def signup(request):
-    return render(request, 'application/signup.html')
+        user = authenticate(request, username = username, password = password)
+        if user is not None:
+            login(request, user)
+            print("Login was successful")
+            return redirect('/')
+        else:
+            print("Login failed")
+            messages.error(request, "Incorrect password or username.")
+
+    return render(request, 'application/login.html')
 
 def card(request):
     return render(request, 'application/card.html')
@@ -68,3 +85,16 @@ def accessoriesdetails(request, pk):
         product = Product.objects.get(id=pk)
     data = { 'product': product}
     return render(request, 'application/product_details.html', data)
+
+def signup(request):
+    form = UserForm()
+
+    if(request.method == "POST"):
+        form = UserForm(request.POST)
+        if(form.is_valid()):
+            form.save()
+            messages.success(request, "Account was created for " + form.cleaned_data.get("username"))
+            return redirect('/login')
+        
+    data = {"form" : form}
+    return render(request, 'application/signup.html', data)
