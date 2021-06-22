@@ -18,3 +18,14 @@ class UserForm(UserCreationForm):
             'username' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Username', 'required' : True ,}),
             'email' : TextInput(attrs = { 'type' : 'email' , 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Email', 'required' : True ,})
             }
+
+class CartForm(ModelForm):
+    class Meta:
+        model = Cart
+        fields = ['user', 'product', 'quantity']
+
+        widgets = {
+            'user' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'product' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'quantity' : NumberInput(attrs = {'class': 'form-control', 'min' : '1'}),
+        }

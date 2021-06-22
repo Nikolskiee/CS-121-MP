@@ -32,45 +32,24 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {% for c in cart %}
+
                                                     <tr>
                                                         <th scope="row justify-content-center">1</th>
                                                         <td><a href="#" class="text-danger "><i class="bi bi-trash-fill" style="color: #ce1d10;"></i></i></a></td>
-                                                        <td><img src="products/laptop_sample.jfif" class="img-fluid" width="35" alt="product"></td>
-                                                        <td>Asus VivoBook S14</td>
+                                                        <td><img src="{{c.item.product.image.url}}" class="img-fluid" width="35" alt="product"></td>
+                                                        <td>{{c.item.product.name}}</td>
                                                         <td>
                                                             <div class="form-group mb-0">
-                                                                <input type="number" min="0" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="1" oninput="displayNewAmount()">
+                                                                <input type="number" min="0" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="{{c.item.quantity}}" oninput="displayNewAmount()">
                                                             </div>
                                                         </td>
-                                                        <td >₱<span id="cartPrc1">99,999.99</span></td>
-                                                        <td class="text-right" >₱<span id="total1">99,999.99</span></td>
+                                                        <td >₱<span id="cartPrc1">{{c.item.product.price}}</span></td>
+                                                        <td class="text-right" >₱<span id="total1"></span></td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td><a href="#" class="text-danger"><i class="bi bi-trash-fill" style="color: #ce1d10;"></i></a></td>
-                                                        <td><img src="products/smartphone_sample.jpg" class="img-fluid" width="35" alt="product"></td>
-                                                        <td>Xiaomi Mi Mix</td>
-                                                        <td>
-                                                            <div class="form-group mb-0">
-                                                                <input type="number" min="0" class="form-control cart-qty" name="cartQty2" id="cartQty2" value="1" oninput="displayNewAmount()">
-                                                            </div>
-                                                        </td>
-                                                        <td>₱<span id="cartPrc2">99,999.99</span></td>
-                                                        <td class="text-right">₱<span id="total2">99,999.99</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td><a href="#" class="" ><i class="bi bi-trash-fill" style="color: #ce1d10;"></i></a></td>
-                                                        <td><img src="products/accessories_sample.jpg" class="img-fluid" width="35" alt="product"></td>
-                                                        <td>Oculus Go</td>
-                                                        <td>
-                                                            <div class="form-group mb-0">
-                                                                <input type="number" min="0" class="form-control cart-qty" name="cartQty3" id="cartQty3" value="1" oninput="displayNewAmount()">
-                                                            </div>
-                                                        </td>
-                                                        <td>₱<span id="cartPrc3">99,999.99</span></td>
-                                                        <td class="text-right">₱<span id="total3">99,999.99</span></td>
-                                                    </tr>
+
+                                                    {% endfor %}
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>

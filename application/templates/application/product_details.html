@@ -56,11 +56,20 @@
                                 </li>
                             </ul>
                         </div>
+                        {% if request.user.is_authenticated %}
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-6">
-                                <a href="javascript:void(0);" class="btn btn-lg" class="btn">Add to cart</a>
+                                <form action = "{%url 'addcart' %}" method = "post">
+                                    {% csrf_token %}
+                                    {{form.user}}
+                                    {{form.product}}
+                                    {{form.quantity}}
+                                    <br>
+                                    <button type="submit" class="btn btn-lg" class="btn"><i class="bi bi-cart-plus-fill"></i>Add to cart</button>
+                                </form>
                             </div>
                         </div>
+                        {% endif %}
                         <hr />
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">

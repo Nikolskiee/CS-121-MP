@@ -30,7 +30,33 @@ def accessories(request):
 
 @login_required(login_url='/login')
 def cart(request):
-    return render(request, 'application/cart.html')
+    items = Cart.objects.filter(user = request.user).order_by('id')
+    cart = []
+    total = 0
+    count = 0
+    for item in items:
+        total = total + (item.quantity * item.product.price)
+        count = count + item.quantity
+        form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
+        cart.append({"item" : item, "form" : form})
+    
+    data = {"cart" : cart, "total" : total, "count" : count}
+    return render(request, 'application/cart.html', data)
+
+@login_required(login_url='/login')
+def addcart(request):
+    form = CartForm(request.POST)
+
+    if (form.is_valid()):
+        form.save()
+        return redirect("/cart")
+
+@login_required(login_url='/login')
+def removecart(request, pk):
+    single_cart = Cart.objects.get(id=pk)
+    single_cart.delete()
+    return redirect("/cart")
+
 
 def signin(request):
     if(request.method == "POST"):
@@ -69,6 +95,8 @@ def laptopdetails(request, pk):
     else:
         product = Product.objects.get(id=pk)  
     data = { 'product': product}
+    form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
+    data["form"] = form
     return render(request, 'application/product_details.html', data)
 
 def smartphonedetails(request, pk):

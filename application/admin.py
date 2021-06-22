@@ -8,3 +8,5 @@ admin.site.register(Laptop)
 admin.site.register(Smartphone)
 
 admin.site.register(Accessories)
+
+admin.site.register(Cart)
