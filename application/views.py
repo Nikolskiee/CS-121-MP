@@ -28,6 +28,7 @@ def accessories(request):
     data = { 'accessories' : accessories }
     return render(request, 'application/accessories.html', data)
 
+@login_required(login_url='/login')
 def cart(request):
     return render(request, 'application/cart.html')
 
@@ -98,3 +99,7 @@ def signup(request):
         
     data = {"form" : form}
     return render(request, 'application/signup.html', data)
+
+def signout(request):
+    logout(request)
+    return redirect('login')
