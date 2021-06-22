@@ -36,5 +36,6 @@ urlpatterns = [
     path('logout/', views.signout, name="logout"),
     path('profile/', views.profile, name="profile"),
     path('cart/add', views.addcart, name="addcart"),
-    path('cart/remove/<str:pk>', views.removecart, name="removecart")
+    path('cart/remove/<str:pk>', views.removecart, name="removecart"),
+    path('cart/update/<str:pk>', views.update_cart, name="updatecart")
 ]

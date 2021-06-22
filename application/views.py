@@ -59,6 +59,15 @@ def removecart(request, pk):
     single_cart.delete()
     return redirect("/cart")
 
+@login_required(login_url='/login')
+def update_cart(request, pk):
+    single_cart = Cart.objects.get(id=pk)
+    form = CartForm(request.POST, instance=single_cart)
+    if (form.is_valid()):
+        form.save()
+    
+    return redirect("/cart")
+
 
 def signin(request):
     if(request.method == "POST"):
