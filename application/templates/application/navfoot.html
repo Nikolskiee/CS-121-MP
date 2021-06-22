@@ -97,7 +97,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {% if request.resolver_match.view_name == 'profile' %}active{% endif %}" href="">
+                                    <a class="nav-link {% if request.resolver_match.view_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}">
                                         <i class="bi bi-person-circle"></i>
                                         {{request.user}}
                                     </a>

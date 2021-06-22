@@ -33,5 +33,6 @@ urlpatterns = [
     path('laptop/details/<str:pk>/', views.laptopdetails, name='laptopdetails'),
     path('smartphones/details/<str:pk>/', views.smartphonedetails, name='smartphonedetails'),
     path('accessories/details/<str:pk>', views.accessoriesdetails, name='accessoriesdetails'),
-    path('logout/', views.signout, name="logout")
+    path('logout/', views.signout, name="logout"),
+    path('profile/', views.profile, name="profile")
 ]

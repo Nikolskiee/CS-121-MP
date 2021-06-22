@@ -103,3 +103,6 @@ def signup(request):
 def signout(request):
     logout(request)
     return redirect('login')
+
+def profile(request):
+    return render(request, 'application/profile.html')
