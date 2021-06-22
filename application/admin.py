@@ -4,3 +4,7 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Laptop)
+
+admin.site.register(Smartphone)
+
+admin.site.register(Accessories)

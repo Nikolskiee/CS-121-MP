@@ -7,6 +7,11 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=False)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0, verbose_name='Price (in php)')
     image = models.ImageField(null=True, blank=True, upload_to='product_images')
+
+    carousel_image_1 = models.ImageField(null=True, blank=True, upload_to='product_images')
+    carousel_image_2 = models.ImageField(null=True, blank=True, upload_to='product_images')
+    carousel_image_3 = models.ImageField(null=True, blank=True, upload_to='product_images')
+
     
     def __str__(self):
         return str(self.name)
@@ -51,7 +56,7 @@ class Laptop(Product):
         return dict(self.TYPE).get(self.type)
 
 
-class Smartphones(Product):
+class Smartphone(Product):
     BRAND = (
         ('SM', 'Samsung'),
         ('XM', 'Xiaomi'),
@@ -65,6 +70,7 @@ class Smartphones(Product):
         ('MDT', 'MediaTek')
     )
     processor_brand = models.CharField(choices = PROCESSOR_BRAND, null = True, blank = False, max_length = 3)
+    processor_model = models.CharField(max_length=100, null=True, blank=False)
 
     OS = (
         ('A10', 'Android 10'),
@@ -88,3 +94,15 @@ class Smartphones(Product):
     def get_os(self):
         return dict(self.OS).get(self.os)
     
+class Accessories(Product):
+    type = models.CharField(max_length = 100, null = True, blank = False)
+    
+    brand = models.CharField(max_length=100, null=True, blank=False)
+
+    color = models.CharField(max_length=100, null=True, blank=False)
+
+    weight = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Weight (in grams)')
+
+    def get_instance(self):
+        return 'accessories'
+

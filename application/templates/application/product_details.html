@@ -123,6 +123,54 @@
                                         </tr>
                                     </table>
                                 </div>
+
+                                {% elif product.get_instance == 'smartphone' %}
+
+                                <div class="row mb-5 d-flex justify-content-center">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th scope="row">OS</th>
+                                            <td>{{ product.get_os }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Processor</th>
+                                            <td>{{ product.get_processor }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Screen</th>
+                                            <td>{{ product.display }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">RAM</th>
+                                            <td>{{ product.ram }} gb </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Storage</th>
+                                            <td>{{ product.storage }} gb</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                {% elif product.get_instance == 'accessories' %}
+
+                                
+                                <div class="row mb-5 d-flex justify-content-center">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th scope="row">Type</th>
+                                            <td>{{ product.type }} Laptop</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Color</th>
+                                            <td>{{ product.color }} gb </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Weight</th>
+                                            <td>{{ product.weight }} Kg</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
                                 {% endif %}
                                 <!-- Product Specifications
                                 <div class="row mb-5 d-flex justify-content-center">

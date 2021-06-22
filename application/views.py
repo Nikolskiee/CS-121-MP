@@ -44,7 +44,10 @@ def about(request):
 def details(request, pk):
     if Laptop.objects.get(id=pk) is not None:
         product = Laptop.objects.get(id=pk)
-
+    elif Smartphone.objects.get(id=pk) is not None:
+        product = Smartphone.objects.get(id=pk)
+    elif Accessories.objects.get(id=pk) is not None:
+        product = Accessories.objects.get(id=pk)
     else:
         product = Product.objects.get(id=pk)  
     data = { 'product': product}
