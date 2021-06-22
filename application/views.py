@@ -104,5 +104,6 @@ def signout(request):
     logout(request)
     return redirect('login')
 
+@login_required(login_url='/login')
 def profile(request):
     return render(request, 'application/profile.html')
