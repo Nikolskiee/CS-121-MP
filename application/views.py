@@ -42,6 +42,10 @@ def about(request):
     return render(request, 'application/about.html')
 
 def details(request, pk):
-    product = Product.objects.get(id=pk)
+    if Laptop.objects.get(id=pk) is not None:
+        product = Laptop.objects.get(id=pk)
+
+    else:
+        product = Product.objects.get(id=pk)  
     data = { 'product': product}
     return render(request, 'application/product_details.html', data)

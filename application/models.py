@@ -12,6 +12,7 @@ class Product(models.Model):
         return str(self.name)
 
 class Laptop(Product):
+    os = models.CharField(max_length=100, null=True, blank=False)
     BRAND = (
         ('AC', 'Acer'),
         ('AS', 'Asus'),
@@ -36,6 +37,12 @@ class Laptop(Product):
         ('GM', 'Gaming')
     )
     type = models.CharField(choices=TYPE, null=True, blank=False, max_length=2)
+
+    def get_instance(self):
+        return 'laptop'
+
+    def get_laptop_type(self):
+        return dict(self.TYPE).get(self.type)
 
 
 

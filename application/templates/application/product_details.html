@@ -47,7 +47,7 @@
                         </h2>
                         <hr />
                         <h3 class="price-container">
-                            ₱49,999.50
+                            ₱{{product.price}}
                         </h3>
                         <div class="certified">
                             <ul>
@@ -77,23 +77,54 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <!--Product Despcription-->
                                 <div class="description description-tabs">
-                                    <h5>ASUS VivoBook  S14 </h5>
-                                    <h6>Conquer the World</h6>
-                                    ASUS VivoBook, a perennial favorite, is getting a new bolder look thatʹs sure to get pulses racing. The slim and lightweight VivoBook S14 now features diamond-cut edges and textured finishes and is available in the exquisite Bespoke Black color, chosen to reflect your true personality. The positive vibes continue when you open the lid, where you’re greeted by an Enter key with yellow color-blocking edges. VivoBook S14 brings out the true you, both inside and out.<br>
+                                    <h5>{{product.name}} </h5>
+                                    {{product.description}}<br>
                                     <br>
-                                    <h6>Dare to be you</h6>
-                                    Being bold means putting yourself out there, and the sleek VivoBook S14 stands out thanks to its textured metal chassis with diamond-cut edges, unique colors, and color-blocking Enter key. The diamond-cut design also makes it easier for you to open the lid.
-                                    <br><br>
-                                    <h6>Colors that are true to you</h6>
-                                    The unique colors of VivoBook S14 buck the trend, providing expressive hues that convey the true you. The colors reflect individuality and self-expression, so you're already breaking boundaries even before you open the lid.
-                                    <br>
-                                    •  INDIE BLACK represents uncompromising independence and leadership, you take charge of any situation and are unafraid to speak up for others
-                                    <br>
-                                    •  RESOLUTE RED means you put yourself out there, unafraid of what others think
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <!-- Product Specifications-->
+
+                                <!---Laptop Specifications-->
+                                {% if product.get_instance == 'laptop' %}
+
+                                <div class="row mb-5 d-flex justify-content-center">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th scope="row">OS</th>
+                                            <td>{{ product.os }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Graphics</th>
+                                            <td>{{ product.graphics_card }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Processor</th>
+                                            <td>{{ product.processor_model }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Screen</th>
+                                            <td>{{ product.display }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">RAM</th>
+                                            <td>{{ product.ram }} gb </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Storage</th>
+                                            <td>{{ product.storage }} gb</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Weight</th>
+                                            <td>{{ product.weight }} Kg</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Type</th>
+                                            <td>{{ product.get_laptop_type }} Laptop</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                {% endif %}
+                                <!-- Product Specifications
                                 <div class="row mb-5 d-flex justify-content-center">
                                     <table class="table table-striped">
                                         <tbody>
@@ -141,7 +172,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div>--->
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <!-- Product Reviews -->
