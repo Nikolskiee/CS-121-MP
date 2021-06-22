@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<title>DVD-R Queen - Laptops</title>
+<title>DVD-R Kween - Laptops</title>
 <!-- Product Details -->
 <main class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row p-5 overflow-auto">
     <div class="row flex-grow-sm-1 flex-grow-0">
@@ -128,6 +128,17 @@
 
         <div class ="col overflow-auto h-100">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                {% if laptops.count == 0 %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{% static 'application/files/logo/DVD-R_Kween_logo.png' %}" style="margin-top:5%" class="card-img-top" alt="...">
+                        <div class="card-body" style="text-align:center">
+                            <p>No products available for now. The admin will add some soon!</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
                 
                 {% for laptop in laptops %}
                 

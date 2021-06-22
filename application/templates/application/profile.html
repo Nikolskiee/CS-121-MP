@@ -14,11 +14,6 @@
                             <img src="{% static 'application/files/profile/sample_pic.jpg' %}" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4>{{request.user.first_name}} {{request.user.last_name}}</h4>
-                                <hr>
-                                Customer
-                                <br>
-                                <br>
-                                <a class="btn btn-primary" href="edit_profile.html" role="button">Edit Profile</a>
                             </div>
                         </div>
                     </div>
@@ -50,26 +45,32 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Phone</h6>
+                                <h6 class="mb-0">Username</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary">+63 912 345 6789
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">123, Main Street, Brgy. Calayo, Nasugbu, Batangas, Philippines
-                                <a href="edit_address.html" style="float: right; color: #185f8b;" >change</a>
+                            <div class="col-sm-9 text-secondary">
+                                {{request.user.username}}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Password</h6>
+                                <h6 class="mb-0">Id</h6>
                             </div>
-                            <div class="col-sm-9 text-secondary">*********<a href="change_password.html" style="float: right; color: #185f8b;" >change</a>
+                            <div class="col-sm-9 text-secondary">
+                                {{request.user.id}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Designation</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {% if request.user.is_staff %}
+                                Admin
+                                {% else %}
+                                Customer
+                                {% endif %}
                             </div>
                         </div>
                     </div>

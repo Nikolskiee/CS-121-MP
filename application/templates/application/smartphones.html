@@ -67,6 +67,16 @@
         </div>
         <div class="col overflow-auto h-100">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% if smartphones.count == 0 %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{% static 'application/files/logo/DVD-R_Kween_logo.png' %}" style="margin-top:5%" class="card-img-top" alt="...">
+                        <div class="card-body" style="text-align:center">
+                            <p>No products available for now. The admin will add some soon!</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
                 {% for smartphone in smartphones %}
                 <div class="col">
                     <div class="card h-100">
