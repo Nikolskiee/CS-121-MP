@@ -41,9 +41,50 @@ class Laptop(Product):
     def get_instance(self):
         return 'laptop'
 
+    def get_brand(self):
+        return dict(self.BRAND).get(self.brand)
+    
+    def get_processor(self):
+        return dict(self.PROCESSOR_BRAND).get(self.processor_brand)
+
     def get_laptop_type(self):
         return dict(self.TYPE).get(self.type)
 
 
+class Smartphones(Product):
+    BRAND = (
+        ('SM', 'Samsung'),
+        ('XM', 'Xiaomi'),
+        ('RM', 'Realme'),
+        ('VV', 'Vivo')
+    )
 
+    brand = models.CharField(choices = BRAND, null = True, blank = False, max_length = 2)
+    PROCESSOR_BRAND = (
+        ('SNP', 'Snapdragon'),
+        ('MDT', 'MediaTek')
+    )
+    processor_brand = models.CharField(choices = PROCESSOR_BRAND, null = True, blank = False, max_length = 3)
+
+    OS = (
+        ('A10', 'Android 10'),
+        ('A11', 'Android 11'),
+        ('A12', 'Android 12')
+    )
+    os = models.CharField(choices = OS, null = True, blank = False, max_length = 3)
+    ram = models.IntegerField(verbose_name = 'RAM (in GB)')
+    storage = models.IntegerField(verbose_name = 'Storage (in GB)')
+    display = models.CharField(max_length = 100, null = True, blank = False)
+
+    def get_instance(self):
+        return 'smartphone'
+
+    def get_brand(self):
+        return dict(self.BRAND).get(self.brand)
+    
+    def get_processor(self):
+        return dict(self.PROCESSOR_BRAND).get(self.processor_brand)
+    
+    def get_os(self):
+        return dict(self.OS).get(self.os)
     
