@@ -40,8 +40,8 @@ def cart(request):
         form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
         cart.append({"item" : item, "form" : form})
     
-    shipping = round(0.05 * float(subtotal), 2)
-    total = round(shipping + float(subtotal), 2)
+    shipping = 100
+    total = shipping + subtotal
     data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping}
     return render(request, 'application/cart.html', data)
 
