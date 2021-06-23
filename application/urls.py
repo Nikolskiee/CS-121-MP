@@ -37,5 +37,7 @@ urlpatterns = [
     path('profile/', views.profile, name="profile"),
     path('cart/add', views.addcart, name="addcart"),
     path('cart/remove/<str:pk>', views.removecart, name="removecart"),
-    path('cart/update/<str:pk>', views.update_cart, name="updatecart")
+    path('cart/update/<str:pk>', views.update_cart, name="updatecart"),
+
+    path('receipt/', views.generate_pdf, name="receipt")
 ]

@@ -1,3 +1,4 @@
+from django.http import response
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, EmailMessage
@@ -9,6 +10,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
+
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
 
 # Create your views here.
 
@@ -167,3 +172,53 @@ def signout(request):
 @login_required(login_url='/login')
 def profile(request):
     return render(request, 'application/profile.html')
+
+
+@login_required(login_url='/login')
+def checkout_cart(request):
+    subject = "MyShop Checkout Receipt"
+    message = "Good Day! <br><br> Below is your Order Payment Slip. Due to a limited workforce in this period of quarantine, there may be delays in the processing of orders. <br> Thank you for your understanding."
+    from_email = settings.EMAIL_HOST_USER
+    recipient_list = [request.user.email]
+    #send_mail(subject, message, from_email, recipient_list)
+    
+    email = EmailMessage(
+        subject,
+        message,
+        from_email,
+        recipient_list,
+    )
+    
+    email.content_subtype = 'html'
+    pdf = generate_pdf(request).getvalue()
+    email.attach("receipt.pdf", pdf, 'application/pdf')
+    #email.send()
+
+    return redirect("/cart")
+
+
+
+@login_required(login_url='/login')
+def generate_pdf(request):
+    template_path = 'application/receipt.html'
+
+    items = Cart.objects.filter(user=request.user).order_by('id')
+    cart = []
+    sub_total = 0
+    product_count = 0
+    for item in items:
+        sub_total = sub_total + (item.quantity * item.product.price)
+        product_count = product_count + item.quantity
+        form = CartForm({"user": item.user.id, "product": item.product.id, "quantity": item.quantity})
+        cart.append({"item": item, "form": form})
+
+    context = {"user": request.user, "cart": cart, "sub_total": sub_total, "product_count": product_count}
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="receipt.pdf"'
+    template = get_template(template_path)
+    html = template.render(context)
+    pdf = pisa.CreatePDF(html, dest=response)
+    
+    if not pdf.err:
+        return response
+    

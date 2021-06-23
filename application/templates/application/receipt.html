@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 2px;
+        }
+
+        @page {
+            size: letter;
+            margin: 1in;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="{% static 'application/files/logo/DVD-R_Kween_logo.png' %}">
+    <h3>User Details</h3>
+    <b>Full Name:</b> {{user.first_name}} {{user.last_name}}<br>
+    <b>Username:</b> {{user.username}}  <br>
+    <b>Email Address:</b> {{user.email}} 
+
+    <br><br>
+    
+    <h3>Purchased Products</h3>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Image</th>
+                <th>Product Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in cart %}
+            <tr>
+                <td>{{c.item.product.name}}</td>
+                <td><img src={{c.item.product.image.url}}></td>
+                <td>Php {{c.item.product.price}}</td>
+                <td>{{c.item.quantity}}</td>
+                <td>Php {% widthratio  c.item.product.price 1 c.item.quantity %}</td>
+            </tr>
+            {% endfor %}            
+        </tbody>
+    </table>
+    
+    <br><br>   
+
+    <h3>Shopping Summary</h3> 
+    <b>Number of Items:</b> {{product_count}} <br>
+    <b>Cumulative Price:</b> Php {{sub_total}} <br>
+
+</body>
+</html>
