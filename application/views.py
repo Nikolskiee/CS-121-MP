@@ -14,6 +14,7 @@ from django.conf import settings
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
+import math
 
 # Create your views here.
 
@@ -127,19 +128,49 @@ def laptopdetails(request, pk):
         product = Laptop.objects.get(id=pk)
     else:
         product = Product.objects.get(id=pk)  
-    data = { 'product': product}
+
+    comments = product.comment_set.all()
+
+    if ( len(comments) != 0 ):
+        overall_rating = 0
+        for comment in comments:
+            overall_rating += comment.rating 
+        overall_rating = overall_rating/len(comments)
+        data = {'product': product, 'comments':comments, 'overall_rating': round(overall_rating), "rating_floor": math.floor(overall_rating), 'rating_float': not overall_rating.is_integer(),}
+    else: 
+        data = {'product': product, 'rating_floor' : 0 }
+    
     form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : " ", "rating" : "0"})
+    data["commentform"] = commentform
     data["form"] = form
+    data["totalreviews"] = len(comments)
     return render(request, 'application/product_details.html', data)
+
+
 
 def smartphonedetails(request, pk):
     if Smartphone.objects.get(id=pk) is not None:
         product = Smartphone.objects.get(id=pk)
     else:
         product = Product.objects.get(id=pk)
-    data = { 'product': product}
+    
+    comments = product.comment_set.all()
+
+    if ( len(comments) != 0 ):
+        overall_rating = 0
+        for comment in comments:
+            overall_rating += comment.rating 
+        overall_rating = overall_rating/len(comments)
+        data = {'product': product, 'comments':comments, 'overall_rating': round(overall_rating), "rating_floor": math.floor(overall_rating), 'rating_float': not overall_rating.is_integer(),}
+    else: 
+        data = {'product': product, 'rating_floor' : 0 } 
+
     form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : " ", "rating" : "0"})
+    data["commentform"] = commentform
     data["form"] = form
+    data["totalreviews"] = len(comments)
     return render(request, 'application/product_details.html', data)
 
 def accessoriesdetails(request, pk):
@@ -147,9 +178,23 @@ def accessoriesdetails(request, pk):
         product = Accessories.objects.get(id=pk)
     else:
         product = Product.objects.get(id=pk)
-    data = { 'product': product}
+    
+    comments = product.comment_set.all()
+
+    if ( len(comments) != 0 ):
+        overall_rating = 0
+        for comment in comments:
+            overall_rating += comment.rating 
+        overall_rating = overall_rating/len(comments)
+        data = {'product': product, 'comments':comments, 'overall_rating': round(overall_rating), "rating_floor": math.floor(overall_rating), 'rating_float': not overall_rating.is_integer(),}
+    else: 
+        data = {'product': product, 'rating_floor' : 0 }
+
     form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : " ", "rating" : "0"})
+    data["commentform"] = commentform
     data["form"] = form
+    data["totalreviews"] = len(comments)
     return render(request, 'application/product_details.html', data)
 
 def signup(request):
@@ -187,6 +232,21 @@ def signout(request):
 @login_required(login_url='/login')
 def profile(request):
     return render(request, 'application/profile.html')
+
+@login_required(login_url='/login')
+def addreview(request, pk):
+    form = CommentForm(request.POST)
+
+    if (form.is_valid()):
+        form.save()
+
+        return redirect("/")
+
+@login_required(login_url='/login')
+def removereview(request, pk):
+    single_comment = Comment.objects.get(id=pk)
+    single_comment.delete()
+    return redirect("/")
 
 
 @login_required(login_url='/login')
