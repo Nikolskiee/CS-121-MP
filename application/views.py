@@ -10,13 +10,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
-from django.http import HttpResponseRedirect
 
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-from django.core.paginator import Paginator
+
 
 import math
 
@@ -406,11 +405,7 @@ def generate_pdf(request):
     
     if not pdf.err:
         return response
-<<<<<<< HEAD
 
-=======
->>>>>>> a8cfdd3b9650462dbb02619f13ce07e47a77a19b
-    
 def search(request):
     search_post = request.GET.get('search')
     if search_post:
@@ -418,9 +413,6 @@ def search(request):
     else:
         # If not searched, return default posts
         prod = Product.objects.all().order_by("-name")
-<<<<<<< HEAD
-    return render(request, 'application/search.html', {'products': prod})
-=======
     return render(request, 'application/search.html', {'products': prod})
 
 def productdetails(request,pk):
@@ -445,4 +437,3 @@ def productdetails(request,pk):
     data["form"] = form
     data["totalreviews"] = len(comments)
     return render(request, 'application/product_details.html', data)
->>>>>>> a8cfdd3b9650462dbb02619f13ce07e47a77a19b
