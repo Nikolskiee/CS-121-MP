@@ -14,3 +14,5 @@ admin.site.register(Cart)
 admin.site.register(User_Details)
 
 admin.site.register(User_Credit)
+
+admin.site.register(Comment)

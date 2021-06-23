@@ -41,6 +41,9 @@ urlpatterns = [
 
     path('receipt/', views.generate_pdf, name="receipt"),
     path('checkout/', views.checkout, name="checkout"),
-    path('checkout/placeorder', views.placeorder, name="placeorder")
+    path('checkout/placeorder', views.placeorder, name="placeorder"),
+
+    path('review/add/<str:pk>/', views.addreview, name="addreview"),
+    path('review/delete/<str:pk>', views.removereview, name="removereview")
 
 ]

@@ -57,3 +57,14 @@ class CreditForm(ModelForm):
             'yyyy' : NumberInput(attrs = {'class': 'form-control', 'min' : '1950', 'max': '2050', 'required': True}),
             'ccv' : NumberInput(attrs = {'class': 'form-control', 'min' : '100', 'max' : '999', 'required': True})
         }
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['user', 'product', 'comment', 'rating']
+        widgets = {
+            'user' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'product' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'comment' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Comment', 'required' : True ,}),
+            'rating' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max' : '5', 'required': True})
+        }
