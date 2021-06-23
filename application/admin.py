@@ -10,3 +10,7 @@ admin.site.register(Smartphone)
 admin.site.register(Accessories)
 
 admin.site.register(Cart)
+
+admin.site.register(User_COD)
+
+admin.site.register(User_Credit)
