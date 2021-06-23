@@ -1,2 +1,5 @@
 
 project/.env
+project/__pycache__
+application/__pycache__
+application/migrations/__pycache__

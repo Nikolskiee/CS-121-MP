@@ -19,7 +19,7 @@ class LaptopFilter(django_filters.FilterSet):
         (32,'32gb'),
     )
     price = django_filters.RangeFilter()
-    ram = django_filters.MultipleChoiceFilter(field_name='brand', choices=RAM, widget=forms.CheckboxSelectMultiple)
+    ram = django_filters.MultipleChoiceFilter(field_name='ram', choices=RAM, widget=forms.CheckboxSelectMultiple)
     PROCESSOR_BRAND = (
         ('AMD', 'AMD'),
         ('INT', 'Intel')
