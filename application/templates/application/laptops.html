@@ -3,11 +3,17 @@
 
 {% block content %}
 <title>DVD-R Kween - Laptops</title>
+
 <!-- Product Details -->
 <main class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row p-5 overflow-auto">
     <div class="row flex-grow-sm-1 flex-grow-0">
         <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 pb-sm-0 pb-3" style="height: 10cm;">
             <div class="bg-light border rounded-3 p-2 h-200">
+                <form method="get">
+                    {{ filter.form.as_p }}
+                    <button type="submit">Apply Filter</button>
+                </form>
+                <!--
                 <h6 class="d-none d-sm-block text-muted">Brand</h6>
                 <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
                     <div class="form-check ">
@@ -122,7 +128,13 @@
                         Android
                         </label>
                     </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-md" style="text-align:center;">
+                            <button type="submit" class="btn btn-primary" id="signup_btn">Apply Filters</button>
+                        </div>
+                    </div>
                 </ul>
+                -->
             </div>
         </div>
 
@@ -140,7 +152,7 @@
                 </div>
                 {% endif %}
                 
-                {% for laptop in laptops %}
+                {% for laptop in filter.qs %}
                 
                 <div class="col">
                     <div class="card h-100">

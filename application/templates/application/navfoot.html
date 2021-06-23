@@ -74,7 +74,7 @@
                         <div>
                             <ul class="navbar-nav me-auto mb-0 mb-lg-0">
                                 <li class="nav-item">
-                                    <form class="d-flex">
+                                    <form class="d-flex" method="GET" action="{% url 'search' %}">
                                         <div class="input-group ">
                                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                             <ul class="dropdown-menu">
@@ -86,10 +86,9 @@
                                                 </li>
                                                 <li><a class="dropdown-item" href="#">All</a></li>
                                             </ul>
-                                            <form action="/search" method="GET">
-                                                <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                                                <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="search">
                                                 <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search" id="search"></i></button>
-                                            </form>
+                                            
                                         </div>
                                     </form>
                                 </li>

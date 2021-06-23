@@ -1,3 +1,4 @@
+from application.filters import LaptopFilter, PhoneFilter
 from django.http import response
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
@@ -26,12 +27,14 @@ def home(request):
 
 def laptops(request):
     laptops = Laptop.objects.all()
-    data = { 'laptops': laptops }
+    laptop_filter = LaptopFilter(request.GET, queryset=laptops)
+    data = { 'laptops': laptops, 'filter': laptop_filter }
     return render(request, 'application/laptops.html', data)
 
 def smartphones(request):
     smartphones = Smartphone.objects.all()
-    data = { 'smartphones' : smartphones }
+    smartphone_filter = PhoneFilter(request.GET, queryset=smartphones)
+    data = { 'smartphones' : smartphones, 'filter': smartphone_filter }
     return render(request, 'application/smartphones.html', data)
 
 def accessories(request):

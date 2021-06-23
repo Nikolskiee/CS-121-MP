@@ -8,6 +8,11 @@
     <div class="row flex-grow-sm-1 flex-grow-0">
         <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 pb-sm-0 pb-3" style="height: 10cm;">
             <div class="bg-light border rounded-3 p-2 h-200">
+                <form method="get">
+                    {{ filter.form.as_p }}
+                    <button type="submit">Apply Filter</button>
+                </form>
+                <!--
                 <h6 class="d-none d-sm-block text-muted">Brand</h6>
                 <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
                     <div class="form-check">
@@ -62,7 +67,7 @@
                     <span class="input-group-text">0.00</span>
                     <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
                     <button type="button" class="btn btn-outline-primary">Go</button>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="col overflow-auto h-100">
@@ -77,7 +82,7 @@
                     </div>
                 </div>
                 {% endif %}
-                {% for smartphone in smartphones %}
+                {% for smartphone in filter.qs %}
                 <div class="col">
                     <div class="card h-100">
                         <img src="{{smartphone.image.url}}" class="card-img-top" alt="...">
