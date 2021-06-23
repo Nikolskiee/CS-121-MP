@@ -18,7 +18,8 @@
         <div class="card">
             <form action="" method="post">
             {% csrf_token %}
-            {{form.user}}
+            {{form1.user}}
+            {{form2.user}}
             <div class="card-body">
                 <h2 class="card-title" style="text-align:center;">Card Payment</h2>
                 <br>
@@ -26,19 +27,19 @@
                 <div class="container p-1">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Province</span>
-                        {{form.province}}
+                        {{form1.province}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Municipality</span>
-                        {{form.municipality}}
+                        {{form1.municipality}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Barangay</span>
-                        {{form.barangay}}
+                        {{form1.barangay}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">House No. and Street</span>
-                        {{form.hs_num}}
+                        {{form1.hs_num}}
                     </div>
                     <br>
                 </div>
@@ -46,7 +47,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md">
                         <div class="form-floating">
-                            {{form.full_name}}
+                            {{form2.full_name}}
                             <label for="cardholdername">
                                 Full Name
                             </label>
@@ -56,7 +57,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md">
                         <div class="form-floating">
-                            {{form.card_number}}
+                            {{form2.card_number}}
                             <label for="cardnumber">
                                 Card Number
                             </label>
@@ -66,7 +67,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md">
                         <div class="form-floating">
-                            {{form.mm}}
+                            {{form2.mm}}
                             <label for="cardholdername">
                                 MM
                             </label>
@@ -74,7 +75,7 @@
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            {{form.dd}}
+                            {{form2.dd}}
                             <label for="cardholdername">
                                 DD
                             </label>
@@ -82,7 +83,7 @@
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            {{form.yyyy}}
+                            {{form2.yyyy}}
                             <label for="cardholdername">
                                 YYYY
                             </label>
@@ -90,22 +91,13 @@
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            {{form.ccv}}
+                            {{form2.ccv}}
                             <label for="cardccv">
                                 CCV
                             </label>
                         </div>
                     </div>
                 </div>
-
-                {% if form.errors %}
-                    {% for key, value in form.errors.items %}
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Error!</strong> {{value | striptags}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endfor %}
-                {% endif %}
 
                 <div class="row g-2 mb-3">
                     <div class="col-md" style="text-align:center;">

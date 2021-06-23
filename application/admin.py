@@ -11,6 +11,6 @@ admin.site.register(Accessories)
 
 admin.site.register(Cart)
 
-admin.site.register(User_COD)
+admin.site.register(User_Details)
 
 admin.site.register(User_Credit)

@@ -6,7 +6,7 @@ from django.utils import tree
 
 # Create your models here.
 
-class User_COD(models.Model):
+class User_Details(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     province = models.CharField(max_length=100, null=True, blank=False)
     municipality = models.CharField(max_length=100, null=True, blank=False)
@@ -15,11 +15,6 @@ class User_COD(models.Model):
 
 class User_Credit(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    province = models.CharField(max_length=100, null=True, blank=False)
-    municipality = models.CharField(max_length=100, null=True, blank=False)
-    barangay = models.CharField(max_length=100, null=True, blank=False)
-    hs_num = models.CharField(max_length=100, null=True, blank=False)
-
     full_name = models.CharField(max_length=100, null=True, blank=False)
     card_number = models.CharField(max_length=100, null=True, blank=False)
     mm = models.CharField(max_length=2, null=True, blank=False)

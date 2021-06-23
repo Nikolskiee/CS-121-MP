@@ -6,6 +6,9 @@
 <div class="d-flex justify-content-center mb-4">
     <div class="col-sm-6">
         <div class="card">
+            <form action='' method="post">
+            {% csrf_token %}
+            {{ form.user }}
             <div class="card-body">
                 <h2 class="card-title" style="text-align:center;">Cash On Delivery</h2>
                 <br>
@@ -13,28 +16,29 @@
                 <div class="container p-1">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Province</span>
-                        <input type="text" class="form-control" placeholder="Province" value="Batangas" aria-label="Province" aria-describedby="basic-addon1">
+                        {{form.province}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Municipality</span>
-                        <input type="text" class="form-control" placeholder="Municipality" value="Nasugbu" aria-label="Username" aria-describedby="basic-addon1">
+                        {{form.municipality}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Barangay</span>
-                        <input type="text" class="form-control" placeholder="Barangay" value="Barangay Calayo" aria-label="Username" aria-describedby="basic-addon1">
+                        {{form.barangay}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">House No. and Street</span>
-                        <input type="text" class="form-control" placeholder="House #, Street Name" value="123, Main Street" aria-label="Username" aria-describedby="basic-addon1">
+                        {{form.hs_num}}
                     </div>
                     <br>
                 </div>
                 <div class="row g-2 mb-3">
                     <div class="col-md" style="text-align:center;">
-                        <a href="{% url 'checkout' %}" class="btn btn-primary" >Proceed</a>
+                        <button type="submit" class="btn btn-primary" id="signup_btn">Proceed</button>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

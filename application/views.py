@@ -99,19 +99,48 @@ def signin(request):
 
 @login_required(login_url='/login')
 def card(request):
-    form = CreditForm({"user" : request.user.id})
+    
+    form1 = UserDetailsForm({"user": request.user.id})
+    form2 = CreditForm({"user" : request.user.id})
     if(request.method == "POST"):
-        form = CreditForm(request.POST)
+        try:
+            details = User_Details.objects.get(user=request.user)
+            form1 = UserDetailsForm(request.POST or None, instance=details)
+        except User_Details.DoesNotExist:
+            form1 = UserDetailsForm(request.POST)
+
+        try:
+            credit = User_Credit.objects.get(user=request.user)
+            form2 = CreditForm(request.POST or None, instance=credit)
+        except User_Credit.DoesNotExist:
+            form2 = CreditForm(request.POST)
+        
+        if(form1.is_valid() and form2.is_valid()):
+            form1.save()
+            form2.save()
+
+            return redirect('/checkout')
+
+    data = {"form1": form1, "form2": form2}
+    return render(request, 'application/card.html', data)
+
+@login_required(login_url='/login')
+def cod(request):
+    form = UserDetailsForm({"user": request.user.id})
+    if(request.method == "POST"):
+        try:
+            details = User_Details.objects.get(user=request.user)
+            form = UserDetailsForm(request.POST or None, instance=details)
+        except User_Details.DoesNotExist:
+            form = UserDetailsForm(request.POST or None)
+        
         if(form.is_valid()):
             form.save()
 
             return redirect('/checkout')
 
     data = {"form": form}
-    return render(request, 'application/card.html', data)
-
-def cod(request):
-    return render(request, 'application/cod.html')
+    return render(request, 'application/cod.html', data)
 
 def terms(request):
     return render(request, 'application/terms.html')

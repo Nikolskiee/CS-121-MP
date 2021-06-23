@@ -30,9 +30,9 @@ class CartForm(ModelForm):
             'quantity' : NumberInput(attrs = {'class': 'form-control', 'min' : '1'}),
         }
 
-class CODForm(ModelForm):
+class UserDetailsForm(ModelForm):
     class Meta:
-        model = User_COD
+        model = User_Details
         fields = ['user', 'province', 'municipality', 'barangay', 'hs_num']
 
         widgets = {
@@ -46,14 +46,10 @@ class CODForm(ModelForm):
 class CreditForm(ModelForm):
     class Meta:
         model = User_Credit
-        fields = ['user', 'province', 'municipality', 'barangay', 'hs_num', 'full_name', 'card_number', 'mm', 'dd', 'yyyy', 'ccv']
+        fields = ['user', 'full_name', 'card_number', 'mm', 'dd', 'yyyy', 'ccv']
 
         widgets = {
             'user' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'province' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Province', 'required' : True ,}),
-            'municipality' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Municipality', 'required' : True ,}),
-            'barangay' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Barangay', 'required' : True ,}),
-            'hs_num' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter House and Street Number', 'required' : True ,}),
             'full_name' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Full Name', 'required' : True ,}),
             'card_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Card Number', 'required' : True ,}),
             'mm' : NumberInput(attrs = {'class': 'form-control', 'min' : '1', 'max': '12', 'required': True}),
