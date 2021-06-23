@@ -61,6 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="cart-body">
+                                        {% if subtotal != 0 %}
                                         <div class="row">
                                             <div class="col-md-12 order-1 order-lg-2 col-lg-7 col-xl-6">
                                                 <div class="order-total table-responsive ">
@@ -96,6 +97,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        {% else %}
+                                        <div class = row style="text-align:center"> 
+                                            <h1><i class="bi bi-cart-x"></i></h1> 
+                                            <p>Your cart is empty.</p>
+                                        </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
