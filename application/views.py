@@ -98,7 +98,16 @@ def signin(request):
     return render(request, 'application/login.html')
 
 def card(request):
-    return render(request, 'application/card.html')
+    form = CreditForm()
+    if(request.method == "POST"):
+        form = CreditForm(request.POST)
+        if(form.is_valid):
+            form.save()
+
+            return redirect('/checkout')
+
+    data = {"form": form}
+    return render(request, 'application/card.html', data)
 
 def cod(request):
     return render(request, 'application/cod.html')

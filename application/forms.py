@@ -58,6 +58,6 @@ class CreditForm(ModelForm):
             'card_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Card Number', 'required' : True ,}),
             'mm' : NumberInput(attrs = {'class': 'form-control', 'min' : '1', 'max': '12', 'required': True}),
             'dd' : NumberInput(attrs = {'class': 'form-control', 'min' : '1', 'max': '31', 'required': True}),
-            'yyyy' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max': '2021', 'required': True}),
-            'ccv' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max' : '999', 'required': True})
+            'yyyy' : NumberInput(attrs = {'class': 'form-control', 'min' : '1950', 'max': '2050', 'required': True}),
+            'ccv' : NumberInput(attrs = {'class': 'form-control', 'min' : '100', 'max' : '999', 'required': True})
         }

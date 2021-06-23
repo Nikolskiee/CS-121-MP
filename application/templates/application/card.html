@@ -11,9 +11,13 @@
     }
 </style>
 
+
+
 <div class="d-flex justify-content-center mb-4">
     <div class="col-sm-6">
         <div class="card">
+            <form action="" method="post">
+            {% csrf_token %}
             <div class="card-body">
                 <h2 class="card-title" style="text-align:center;">Card Payment</h2>
                 <br>
@@ -21,19 +25,19 @@
                 <div class="container p-1">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Province</span>
-                        <input type="text" class="form-control" placeholder="Province" value="" aria-label="Province" aria-describedby="basic-addon1">
+                        {{form.province}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Municipality</span>
-                        <input type="text" class="form-control" placeholder="Municipality" value="" aria-label="Username" aria-describedby="basic-addon1">
+                        {{form.municipality}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Barangay</span>
-                        <input type="text" class="form-control" placeholder="Barangay" value="" aria-label="Username" aria-describedby="basic-addon1">
+                        {{form.barangay}}
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">House No. and Street</span>
-                        <input type="text" class="form-control" placeholder="House #, Street Name" value="" aria-label="Username" aria-describedby="basic-addon1">
+                        {{form.hs_num}}
                     </div>
                     <br>
                 </div>
@@ -41,7 +45,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="cardholdername" placeholder="Cardholder's Name">
+                            {{form.full_name}}
                             <label for="cardholdername">
                                 Full Name
                             </label>
@@ -51,7 +55,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="cardnumber" placeholder="Card Number">
+                            {{form.card_number}}
                             <label for="cardnumber">
                                 Card Number
                             </label>
@@ -61,7 +65,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="number" min="1" max="12" class="form-control" id="cardexpmonth" placeholder="Month">
+                            {{form.mm}}
                             <label for="cardholdername">
                                 MM
                             </label>
@@ -69,7 +73,7 @@
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="number" min="1" max="12" class="form-control" id="cardexpmonth" placeholder="Month">
+                            {{form.dd}}
                             <label for="cardholdername">
                                 DD
                             </label>
@@ -77,7 +81,7 @@
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="number" min="2021" class="form-control" id="cardexpyear" placeholder="Year">
+                            {{form.yyyy}}
                             <label for="cardholdername">
                                 YYYY
                             </label>
@@ -85,18 +89,29 @@
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="cardccv" placeholder="CCV">
+                            {{form.ccv}}
                             <label for="cardccv">
                                 CCV
                             </label>
                         </div>
                     </div>
                 </div>
+
+                {% if form.errors %}
+                    {% for key, value in form.errors.items %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> {{value | striptags}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+
                 <div class="row g-2 mb-3">
                     <div class="col-md" style="text-align:center;">
-                        <a href="{% url 'checkout' %}" class="btn btn-primary" >Proceed</a>
+                        <button type="submit" class="btn btn-primary" id="signup_btn">Proceed</button>
                     </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>
