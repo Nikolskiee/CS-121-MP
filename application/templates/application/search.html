@@ -1,0 +1,46 @@
+{% extends 'application/navfoot.html' %}
+{% load static %}
+
+{% block content %}
+<title>DVD-R Kween - Search</title>
+<div class="container">
+     <br><br>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}">
+        <div class="input-group" style="width: 10cm; margin-left: auto; margin-right: auto;" >
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="search" value="{{search}}">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="bi bi-search" id="search"></i></button>
+        </div>
+        </form><br>
+    <div class ="col h-100">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+
+            {% if products.count == 0 %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{% static 'application/files/logo/DVD-R_Kween_logo.png' %}" style="margin-top:5%" class="card-img-top" alt="...">
+                    <div class="card-body" style="text-align:center">
+                        <p>No products available for now. The admin will add some soon!</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% for product in products %}
+            
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{product.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="{% url 'product details' product.id %}" class="stretched-link" id="product-name">{{product.name}}</a>
+                        <h5 href=""class="card-title">₱ {{product.price}}</h5>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock content %}

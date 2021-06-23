@@ -10,9 +10,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
-
+from django.db.models import Q
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+from django.core.paginator import Paginator
 
 import math
 
@@ -151,6 +152,29 @@ def privacy(request):
 
 def about(request):
     return render(request, 'application/about.html')
+
+def productdetails(request,pk):
+    if(Product.objects.get(id=pk) is not None):
+        product = Product.objects.get(id=pk)
+    else:
+        product = Product.objects.get(id=pk)
+    comments = product.comment_set.all()
+
+    if ( len(comments) != 0 ):
+        overall_rating = 0
+        for comment in comments:
+            overall_rating += comment.rating 
+        overall_rating = overall_rating/len(comments)
+        data = {'product': product, 'comments':comments, 'overall_rating': round(overall_rating), "rating_floor": math.floor(overall_rating), 'rating_float': not overall_rating.is_integer(),}
+    else: 
+        data = {'product': product, 'rating_floor' : 0 }
+    
+    form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
+    data["commentform"] = commentform
+    data["form"] = form
+    data["totalreviews"] = len(comments)
+    return render(request, 'application/product_details.html', data)
 
 def laptopdetails(request, pk):
     if Laptop.objects.get(id=pk) is not None:
@@ -352,4 +376,13 @@ def generate_pdf(request):
     
     if not pdf.err:
         return response
+
     
+def search(request):
+    search_post = request.GET.get('search')
+    if search_post:
+        prod = Product.objects.filter(Q(name__icontains=search_post) | Q(description__icontains=search_post))
+    else:
+        # If not searched, return default posts
+        prod = Product.objects.all().order_by("-name")
+    return render(request, 'application/search.html', {'products': prod})

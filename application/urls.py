@@ -44,6 +44,8 @@ urlpatterns = [
     path('checkout/placeorder', views.placeorder, name="placeorder"),
 
     path('review/add/<str:pk>/', views.addreview, name="addreview"),
-    path('review/delete/<str:pk>', views.removereview, name="removereview")
+    path('review/delete/<str:pk>', views.removereview, name="removereview"),
+    path('search/', views.search, name="search"),
+    path('product/details/<str:pk>/', views.productdetails, name='product details')
 
 ]
