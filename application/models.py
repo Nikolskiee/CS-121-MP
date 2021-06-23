@@ -12,6 +12,12 @@ class User_Details(models.Model):
     municipality = models.CharField(max_length=100, null=True, blank=False)
     barangay = models.CharField(max_length=100, null=True, blank=False)
     hs_num = models.CharField(max_length=100, null=True, blank=False)
+    PAYMENT = (
+        ('None', 'None'),
+        ('Cash On Delivery', 'Cash On Delivery'),
+        ('Credit Card', 'Credit Card')
+    )
+    payment_option = models.CharField(choices=PAYMENT, null=True, blank=False, max_length=50)
 
 class User_Credit(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

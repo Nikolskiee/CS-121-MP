@@ -55,6 +55,7 @@ def cart(request):
     
     shipping = 100
     total = shipping + subtotal
+    user = request.user
     data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping}
     return render(request, 'application/cart.html', data)
 
@@ -101,18 +102,34 @@ def signin(request):
 @login_required(login_url='/login')
 def card(request):
     
-    form1 = UserDetailsForm({"user": request.user.id})
-    form2 = CreditForm({"user" : request.user.id})
+    try:
+        details = User_Details.objects.get(user=request.user)
+        form1 = UserDetailsForm(instance=details)
+        details.payment_option = "Credit Card"
+
+    except User_Details.DoesNotExist:
+        form1 = UserDetailsForm({"user": request.user.id})
+
+    try:
+        credit = User_Credit.objects.get(user=request.user)
+        form2 = CreditForm(instance=credit)
+
+    except User_Credit.DoesNotExist:
+        form2 = CreditForm({"user": request.user.id})
+
     if(request.method == "POST"):
         try:
             details = User_Details.objects.get(user=request.user)
             form1 = UserDetailsForm(request.POST or None, instance=details)
+            details.payment_option = "Credit Card"
+
         except User_Details.DoesNotExist:
             form1 = UserDetailsForm(request.POST)
 
         try:
             credit = User_Credit.objects.get(user=request.user)
             form2 = CreditForm(request.POST or None, instance=credit)
+
         except User_Credit.DoesNotExist:
             form2 = CreditForm(request.POST)
         
@@ -127,17 +144,25 @@ def card(request):
 
 @login_required(login_url='/login')
 def cod(request):
-    form = UserDetailsForm({"user": request.user.id})
+    try:
+        details = User_Details.objects.get(user=request.user)
+        form = UserDetailsForm(instance=details)
+        details.payment_option = "Cash On Delivery"
+
+    except User_Details.DoesNotExist:
+        form = UserDetailsForm({"user": request.user.id})
+
     if(request.method == "POST"):
         try:
             details = User_Details.objects.get(user=request.user)
             form = UserDetailsForm(request.POST or None, instance=details)
+            details.payment_option = "Cash On Delivery"
+
         except User_Details.DoesNotExist:
             form = UserDetailsForm(request.POST or None)
         
         if(form.is_valid()):
             form.save()
-
             return redirect('/checkout')
 
     data = {"form": form}
@@ -292,7 +317,8 @@ def checkout(request):
     
     shipping = 100
     total = shipping + subtotal
-    data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping}
+    user_details = User_Details.objects.get(user=request.user)
+    data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping, "user_details": user_details}
     return render(request, 'application/checkout.html',data)
 
 @login_required(login_url='/login')
@@ -343,7 +369,8 @@ def generate_pdf(request):
         form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
         cart.append({"item" : item, "form" : form, "pretotal" : pretotal})
 
-    context = {"user": request.user, "cart": cart, "sub_total": sub_total, "product_count": product_count}
+    user_details = User_Details.objects.get(user=request.user)
+    context = {"user": request.user, "cart": cart, "sub_total": sub_total, "product_count": product_count, "user_details": user_details}
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'filename="receipt.pdf"'
     template = get_template(template_path)
