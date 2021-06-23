@@ -170,7 +170,7 @@ def laptopdetails(request, pk):
         data = {'product': product, 'rating_floor' : 0 }
     
     form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
-    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : " ", "rating" : "0"})
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
     data["commentform"] = commentform
     data["form"] = form
     data["totalreviews"] = len(comments)
@@ -196,7 +196,7 @@ def smartphonedetails(request, pk):
         data = {'product': product, 'rating_floor' : 0 } 
 
     form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
-    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : " ", "rating" : "0"})
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
     data["commentform"] = commentform
     data["form"] = form
     data["totalreviews"] = len(comments)
@@ -220,7 +220,7 @@ def accessoriesdetails(request, pk):
         data = {'product': product, 'rating_floor' : 0 }
 
     form = CartForm({"user" : request.user.id, "product" : product.id, "quantity" : "1"})
-    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : " ", "rating" : "0"})
+    commentform = CommentForm({"user" : request.user.id, "product" : product.id, "comment" : "", "rating" : "0"})
     data["commentform"] = commentform
     data["form"] = form
     data["totalreviews"] = len(comments)
