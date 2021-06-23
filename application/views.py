@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
+from django.http import HttpResponseRedirect
 
 from django.template.loader import get_template
 from xhtml2pdf import pisa
@@ -269,13 +270,13 @@ def addreview(request, pk):
     if (form.is_valid()):
         form.save()
 
-        return redirect("/")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required(login_url='/login')
 def removereview(request, pk):
     single_comment = Comment.objects.get(id=pk)
     single_comment.delete()
-    return redirect("/")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required(login_url='/login')
