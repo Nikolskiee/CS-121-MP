@@ -261,7 +261,7 @@ def signup(request):
             form.save()
             messages.success(request, "Account was created for " + form.cleaned_data.get("username"))
             subject = "Account Creation Confirmation"
-            message = "Good Day! " + request.POST.get("username") + ", <br> Welcome to our Shop! An online gadget shop for your everday needs. You are receiving this email is to confirm that an your account was successfully created. If it was not you who has created this account, immediately contact us at contacts@dvdrkween.com. <br>Thank you! <br>Sincerely,<br>DVD-R Kween"
+            message = "Good Day! " + request.POST.get("username") + ", <br><br>Welcome to our Shop! An online gadget shop for your everday needs. You are receiving this email to confirm that your account was successfully created. If it was not you who has created this account, immediately contact us at contacts@dvdrkween.com. Thank you! <br><br>Sincerely,<br>DVD-R Kween"
             from_email = settings.EMAIL_HOST_USER
             recipient_list = [request.POST.get("email")]
 
@@ -325,7 +325,7 @@ def checkout(request):
 @login_required(login_url='/login')
 def placeorder(request):
     subject = "DVD-R Kween Receipt"
-    message = "Good Day! " + request.user.username + ", <br>Attached is your Invoice Slip. Please expect the package to be delivered at you after 7 working days. If you have concerns regarding your this purchase, please contact us at contacts@dvdrkween.com. Thank you for your patronage to our shop. An online gadget shop for your daily needs.<br>Sincerely,<br>DVD-R Kween"
+    message = "Good Day! " + request.user.username + ", <br><br>Attached is your Invoice Slip. Please expect the package to be delivered at you after 7 working days. If you have concerns regarding your this purchase, please contact us at contacts@dvdrkween.com. Thank you for your patronage to our shop. An online gadget shop for your daily needs.<br><br>Sincerely,<br>DVD-R Kween"
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [request.user.email]
 
