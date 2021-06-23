@@ -17,6 +17,27 @@
             <div class="card-body">
                 <h2 class="card-title" style="text-align:center;">Card Payment</h2>
                 <br>
+                <p style="text-align: center;"><b>Recipient's Address</b></p>
+                <div class="container p-1">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Province</span>
+                        <input type="text" class="form-control" placeholder="Province" value="" aria-label="Province" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Municipality</span>
+                        <input type="text" class="form-control" placeholder="Municipality" value="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Barangay</span>
+                        <input type="text" class="form-control" placeholder="Barangay" value="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">House No. and Street</span>
+                        <input type="text" class="form-control" placeholder="House #, Street Name" value="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <br>
+                </div>
+                <p style="text-align:center"><b>Cardholder's Details</b></p>
                 <div class="row g-2 mb-3">
                     <div class="col-md">
                         <div class="form-floating">
@@ -48,6 +69,14 @@
                     </div>
                     <div class="col-md">
                         <div class="form-floating">
+                            <input type="number" min="1" max="12" class="form-control" id="cardexpmonth" placeholder="Month">
+                            <label for="cardholdername">
+                                DD
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
                             <input type="number" min="2021" class="form-control" id="cardexpyear" placeholder="Year">
                             <label for="cardholdername">
                                 YYYY
@@ -65,7 +94,7 @@
                 </div>
                 <div class="row g-2 mb-3">
                     <div class="col-md" style="text-align:center;">
-                        <button type="submit" class="btn btn-primary" id="paybtn">Pay Now</button>
+                        <button type="submit" class="btn btn-primary" id="paybtn">Proceed</button>
                     </div>
                 </div>
             </div>

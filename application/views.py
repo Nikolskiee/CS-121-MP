@@ -1,5 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail, EmailMessage
 from .models import *
 from .forms import *
 from django.http import HttpResponse
@@ -7,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.conf import settings
 
 # Create your views here.
 
@@ -138,6 +140,21 @@ def signup(request):
         if(form.is_valid()):
             form.save()
             messages.success(request, "Account was created for " + form.cleaned_data.get("username"))
+            subject = "Account Creation Confirmation"
+            message = "Good Day!" + request.POST.get("username") + ", <br><br> This is to confirm that an your account was successfully created."
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [request.POST.get("signupemail")]
+
+            email = EmailMessage (
+                subject, 
+                message,
+                from_email,
+                recipient_list,
+            )
+
+            email.content_subtype = "html"
+
+            email.send()
             return redirect('/login')
         
     data = {"form" : form}
