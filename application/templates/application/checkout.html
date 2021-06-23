@@ -1,0 +1,100 @@
+{% extends 'application/navfoot.html' %} 
+{% load static %}
+
+{% block content %}
+<title>DVD-R Kween - Checkout</title>
+<div class="container p-3">
+    <div class="contentbar">
+        <!-- Start row -->
+        <div class="row">
+            <!-- Start col -->
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div class="card m-b-30" style="width: 80%; margin: auto;">
+                    <div class="card-header">
+                        <h5 class="card-title">Cart</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10 col-xl-10">
+                                <div class="cart-container">
+                                    <div class="cart-head">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Photo</th>
+                                                        <th scope="col">Product</th>
+                                                        <th scope="col">Qty</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col" class="text-right">Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                    
+                                                    {% for c in cart %}
+
+                                                    <tr>
+                                                        <td><img src="{{c.item.product.image.url}}" class="img-fluid" width="35" alt="product"></td>
+                                                        <td>{{c.item.product.name}}</td>
+                                                        <td style="width:20%">{{c.quantity}} </td>
+                                                        <td >₱<span id="cartPrc1">{{c.item.product.price}}</span></td>
+                                                        <td class="text-right" >₱<span id="total1">{% widthratio  c.item.product.price 1 c.item.quantity %}</span></td>
+                                                    </tr>
+
+                                                    {% endfor %}
+                                                    
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="cart-body">
+                                        <div class="row">
+                                            <div class="col-md-12 order-1 order-lg-2 col-lg-7 col-xl-6">
+                                                <div class="order-total table-responsive ">
+                                                    <table class="table table-borderless text-right">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Number of Items: </td>
+                                                                <td><span id="qty">{{count}}</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Subtotal :</td>
+                                                                <td >₱<span id="subtotal">{{subtotal}}</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Shipping :</td>
+                                                                <td>₱{{shipping}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="f-w-7 font-18">
+                                                                    <h4>Amount :</h4>
+                                                                </td>
+                                                                <td class="f-w-7 font-18">
+                                                                    <h4>₱<span id="total">{{total}}</span></h4>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="cart-footer text-right">
+                                                        <h3>Place Order</h3>
+                                                        <a href="{% url '' %}" class="btn my-1" style="outline-color: #53a6d8;"><i class="bi bi-box-seam"></i></i> Place Order</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End col -->
+        </div>
+        <!-- End row -->
+    </div>
+</div>
+
+{% endblock content %}
