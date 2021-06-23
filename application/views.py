@@ -97,11 +97,12 @@ def signin(request):
 
     return render(request, 'application/login.html')
 
+@login_required(login_url='/login')
 def card(request):
-    form = CreditForm()
+    form = CreditForm({"user" : request.user.id})
     if(request.method == "POST"):
         form = CreditForm(request.POST)
-        if(form.is_valid):
+        if(form.is_valid()):
             form.save()
 
             return redirect('/checkout')
