@@ -11,7 +11,7 @@
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="card m-b-30" style="width: 80%; margin: auto;">
                     <div class="card-header">
-                        <h5 class="card-title">Cart</h5>
+                        <h5 class="card-title">Checkout</h5>
                     </div>
                     <div class="card-body">
                         <div class="row justify-content-center">
@@ -36,7 +36,7 @@
                                                     <tr>
                                                         <td><img src="{{c.item.product.image.url}}" class="img-fluid" width="35" alt="product"></td>
                                                         <td>{{c.item.product.name}}</td>
-                                                        <td style="width:20%">{{c.quantity}} </td>
+                                                        <td style="width:20%">{{c.item.quantity}} </td>
                                                         <td >₱<span id="cartPrc1">{{c.item.product.price}}</span></td>
                                                         <td class="text-right" >₱<span id="total1">{% widthratio  c.item.product.price 1 c.item.quantity %}</span></td>
                                                     </tr>
@@ -77,9 +77,28 @@
                                                         </tbody>
                                                     </table>
                                                     <div class="cart-footer text-right">
-                                                        <h3>Place Order</h3>
-                                                        <a href="{% url '' %}" class="btn my-1" style="outline-color: #53a6d8;"><i class="bi bi-box-seam"></i></i> Place Order</a>
-                                                    
+                                                        <button class="btn my-1" style="outline-color: #53a6d8;" data-bs-toggle="modal" data-bs-target="#modal_keme_{{total}}"><i class="bi bi-box-seam"></i></i> Place Order</button>
+                                                        <div class="modal fade" id="modal_keme_{{total}}" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Place Order Confirmation</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Are you sure you want to pay {{total}}?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="{% url 'home' %}" class="btn btn-outline-primary">
+                                                                            <i class="fas fa-trash"></i> Place Order
+                                                                        </a>
+                                                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                                                            <i class="fas fa-ban"></i> Cancel
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

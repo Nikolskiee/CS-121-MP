@@ -175,6 +175,23 @@ def profile(request):
 
 
 @login_required(login_url='/login')
+def checkout(request):
+    items = Cart.objects.filter(user = request.user).order_by('id')
+    cart = []
+    subtotal = 0
+    count = 0
+    for item in items:
+        subtotal = subtotal + (item.quantity * item.product.price)
+        count = count + item.quantity
+        form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
+        cart.append({"item" : item, "form" : form})
+    
+    shipping = 100
+    total = shipping + subtotal
+    data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping}
+    return render(request, 'application/checkout.html',data)
+
+@login_required(login_url='/login')
 def checkout_cart(request):
     subject = "MyShop Checkout Receipt"
     message = "Good Day! <br><br> Below is your Order Payment Slip. Due to a limited workforce in this period of quarantine, there may be delays in the processing of orders. <br> Thank you for your understanding."

@@ -111,7 +111,7 @@ class Accessories(Product):
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
+    
     quantity = models.IntegerField(null = True, validators = [MinValueValidator(1)])
 
     def set_quantity(input):
