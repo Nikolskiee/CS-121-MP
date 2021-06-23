@@ -47,7 +47,7 @@
                 <td><img src="{{c.item.product.image.path}}"></td>
                 <td>Php {{c.item.product.price}}</td>
                 <td>{{c.item.quantity}}</td>
-                <td>Php {% widthratio  c.item.product.price 1 c.item.quantity %}</td>
+                <td>Php {{c.pretotal}}</td>
             </tr>
             {% endfor %}            
         </tbody>

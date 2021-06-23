@@ -44,8 +44,13 @@ def cart(request):
     for item in items:
         subtotal = subtotal + (item.quantity * item.product.price)
         count = count + item.quantity
+        pretotal = 0
+        x = 0
+        while x < item.quantity:
+            pretotal += item.product.price
+            x += 1
         form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
-        cart.append({"item" : item, "form" : form})
+        cart.append({"item" : item, "form" : form, "pretotal" : pretotal})
     
     shipping = 100
     total = shipping + subtotal
@@ -231,8 +236,13 @@ def generate_pdf(request):
     for item in items:
         sub_total = sub_total + (item.quantity * item.product.price)
         product_count = product_count + item.quantity
-        form = CartForm({"user": item.user.id, "product": item.product.id, "quantity": item.quantity})
-        cart.append({"item": item, "form": form})
+        pretotal = 0
+        x = 0
+        while x < item.quantity:
+            pretotal += item.product.price
+            x += 1
+        form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
+        cart.append({"item" : item, "form" : form, "pretotal" : pretotal})
 
     context = {"user": request.user, "cart": cart, "sub_total": sub_total, "product_count": product_count}
     response = HttpResponse(content_type='application/pdf')
