@@ -33,29 +33,31 @@ class CartForm(ModelForm):
 class CODForm(ModelForm):
     class Meta:
         model = User_COD
-        fields = ['province', 'municipality', 'barangay', 'hs_num']
+        fields = ['user', 'province', 'municipality', 'barangay', 'hs_num']
 
         widgets = {
-            'province' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'municipality' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'barangay' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'hs_num' : HiddenInput(attrs = {'type' : 'hidden'})
+            'user' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'province' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Province', 'required' : True ,}),
+            'municipality' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Municipality', 'required' : True ,}),
+            'barangay' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Barangay', 'required' : True ,}),
+            'hs_num' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter House and Street Number', 'required' : True ,})
         }
 
 class CreditForm(ModelForm):
     class Meta:
         model = User_Credit
-        fields = ['province', 'municipality', 'barangay', 'hs_num', 'full_name', 'card_number', 'mm', 'dd', 'yyyy', 'ccv']
+        fields = ['user', 'province', 'municipality', 'barangay', 'hs_num', 'full_name', 'card_number', 'mm', 'dd', 'yyyy', 'ccv']
 
         widgets = {
-            'province' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'municipality' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'barangay' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'hs_num' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'full_name' : HiddenInput(attrs = {'type' : 'hidden'}),
-            'card_number' : NumberInput(attrs = {'class': 'form-control'}),
-            'mm' : NumberInput(attrs = {'class': 'form-control', 'min' : '1', 'max': '12'}),
-            'dd' : NumberInput(attrs = {'class': 'form-control', 'min' : '1', 'max': '31'}),
-            'yyyy' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max': '2021'}),
-            'ccv' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max' : '999'})
+            'user' : HiddenInput(attrs = {'type' : 'hidden'}),
+            'province' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Province', 'required' : True ,}),
+            'municipality' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Municipality', 'required' : True ,}),
+            'barangay' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Barangay', 'required' : True ,}),
+            'hs_num' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter House and Street Number', 'required' : True ,}),
+            'full_name' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Full Name', 'required' : True ,}),
+            'card_number' : TextInput(attrs = { 'class' : 'form-control', 'id' : 'floating-input', 'placeholder' : 'Enter Card Number', 'required' : True ,}),
+            'mm' : NumberInput(attrs = {'class': 'form-control', 'min' : '1', 'max': '12', 'required': True}),
+            'dd' : NumberInput(attrs = {'class': 'form-control', 'min' : '1', 'max': '31', 'required': True}),
+            'yyyy' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max': '2021', 'required': True}),
+            'ccv' : NumberInput(attrs = {'class': 'form-control', 'min' : '0', 'max' : '999', 'required': True})
         }
