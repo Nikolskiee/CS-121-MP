@@ -10,7 +10,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
+
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.core.paginator import Paginator
@@ -56,6 +58,7 @@ def cart(request):
     
     shipping = 100
     total = shipping + subtotal
+    user = request.user
     data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping}
     return render(request, 'application/cart.html', data)
 
@@ -102,18 +105,34 @@ def signin(request):
 @login_required(login_url='/login')
 def card(request):
     
-    form1 = UserDetailsForm({"user": request.user.id})
-    form2 = CreditForm({"user" : request.user.id})
+    try:
+        details = User_Details.objects.get(user=request.user)
+        form1 = UserDetailsForm(instance=details)
+        details.payment_option = "Credit Card"
+
+    except User_Details.DoesNotExist:
+        form1 = UserDetailsForm({"user": request.user.id})
+
+    try:
+        credit = User_Credit.objects.get(user=request.user)
+        form2 = CreditForm(instance=credit)
+
+    except User_Credit.DoesNotExist:
+        form2 = CreditForm({"user": request.user.id})
+
     if(request.method == "POST"):
         try:
             details = User_Details.objects.get(user=request.user)
             form1 = UserDetailsForm(request.POST or None, instance=details)
+            details.payment_option = "Credit Card"
+
         except User_Details.DoesNotExist:
             form1 = UserDetailsForm(request.POST)
 
         try:
             credit = User_Credit.objects.get(user=request.user)
             form2 = CreditForm(request.POST or None, instance=credit)
+
         except User_Credit.DoesNotExist:
             form2 = CreditForm(request.POST)
         
@@ -128,17 +147,25 @@ def card(request):
 
 @login_required(login_url='/login')
 def cod(request):
-    form = UserDetailsForm({"user": request.user.id})
+    try:
+        details = User_Details.objects.get(user=request.user)
+        form = UserDetailsForm(instance=details)
+        details.payment_option = "Cash On Delivery"
+
+    except User_Details.DoesNotExist:
+        form = UserDetailsForm({"user": request.user.id})
+
     if(request.method == "POST"):
         try:
             details = User_Details.objects.get(user=request.user)
             form = UserDetailsForm(request.POST or None, instance=details)
+            details.payment_option = "Cash On Delivery"
+
         except User_Details.DoesNotExist:
             form = UserDetailsForm(request.POST or None)
         
         if(form.is_valid()):
             form.save()
-
             return redirect('/checkout')
 
     data = {"form": form}
@@ -259,7 +286,7 @@ def signup(request):
             form.save()
             messages.success(request, "Account was created for " + form.cleaned_data.get("username"))
             subject = "Account Creation Confirmation"
-            message = "Good Day! " + request.POST.get("username") + ", <br><br> This is to confirm that an your account was successfully created."
+            message = "Good Day! " + request.POST.get("username") + ", <br><br>Welcome to our Shop! An online gadget shop for your everday needs. You are receiving this email to confirm that your account was successfully created. If it was not you who has created this account, immediately contact us at contacts@dvdrkween.com. Thank you! <br><br>Sincerely,<br>DVD-R Kween"
             from_email = settings.EMAIL_HOST_USER
             recipient_list = [request.POST.get("email")]
 
@@ -293,13 +320,13 @@ def addreview(request, pk):
     if (form.is_valid()):
         form.save()
 
-        return redirect("/")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required(login_url='/login')
 def removereview(request, pk):
     single_comment = Comment.objects.get(id=pk)
     single_comment.delete()
-    return redirect("/")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required(login_url='/login')
@@ -316,13 +343,14 @@ def checkout(request):
     
     shipping = 100
     total = shipping + subtotal
-    data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping}
+    user_details = User_Details.objects.get(user=request.user)
+    data = {"cart" : cart, "subtotal" : subtotal, "count" : count, "total" : total, "shipping" : shipping, "user_details": user_details}
     return render(request, 'application/checkout.html',data)
 
 @login_required(login_url='/login')
 def placeorder(request):
     subject = "DVD-R Kween Receipt"
-    message = "Good Day! " + request.user.username + ", <br><br> Below is your Invoice Slip. Expect the package to be delivered at you after 7 working days. Thank you."
+    message = "Good Day! " + request.user.username + ", <br><br>Attached is your Invoice Slip. Please expect the package to be delivered at you after 7 working days. If you have concerns regarding your this purchase, please contact us at contacts@dvdrkween.com. Thank you for your patronage to our shop. An online gadget shop for your daily needs.<br><br>Sincerely,<br>DVD-R Kween"
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [request.user.email]
 
@@ -367,7 +395,8 @@ def generate_pdf(request):
         form = CartForm({"user": item.user.id, "product" : item.product.id, "quantity" : item.quantity})
         cart.append({"item" : item, "form" : form, "pretotal" : pretotal})
 
-    context = {"user": request.user, "cart": cart, "sub_total": sub_total, "product_count": product_count}
+    user_details = User_Details.objects.get(user=request.user)
+    context = {"user": request.user, "cart": cart, "sub_total": sub_total, "product_count": product_count, "user_details": user_details}
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'filename="receipt.pdf"'
     template = get_template(template_path)
