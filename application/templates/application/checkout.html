@@ -50,25 +50,34 @@
                                     </div>
                                     <div class="cart-body">
                                         <div class="row">
-                                            <div class="col-md-12 order-1 order-lg-2 col-lg-7 col-xl-6">
+                                            <div class="col-md-12 order-1 order-lg-2 col-lg-12 col-xl-12">
                                                 <div class="order-total table-responsive ">
-                                                    <table class="table table-borderless text-right">
+                                                    <table style="width:max-content" class="table table-borderless text-right">
                                                         <tbody>
+                                                            
+                                                            <tr>
+                                                                <td>Payment Method: </td>
+                                                                <td>{{user_details.payment_option}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Address: </td>
+                                                                <td>{{user_details.hs_num}}, {{user_details.barangay}}, {{user_details.municipality}}, {{user_details.province}}</td>
+                                                            </tr>
                                                             <tr>
                                                                 <td>Number of Items: </td>
                                                                 <td><span id="qty">{{count}}</span></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Subtotal :</td>
+                                                                <td>Subtotal:</td>
                                                                 <td >₱<span id="subtotal">{{subtotal}}</span></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Shipping :</td>
+                                                                <td>Shipping:</td>
                                                                 <td>₱{{shipping}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="f-w-7 font-18">
-                                                                    <h4>Amount :</h4>
+                                                                    <h4>Amount:</h4>
                                                                 </td>
                                                                 <td class="f-w-7 font-18">
                                                                     <h4>₱<span id="total">{{total}}</span></h4>
