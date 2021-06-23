@@ -1,8 +1,31 @@
 from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator
+from django.contrib.auth.models import User
+from django.utils import tree
 
 # Create your models here.
+
+class User_COD(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    province = models.CharField(max_length=100, null=True, blank=False)
+    municipality = models.CharField(max_length=100, null=True, blank=False)
+    barangay = models.CharField(max_length=100, null=True, blank=False)
+    hs_num = models.CharField(max_length=100, null=True, blank=False)
+
+class User_Credit(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    province = models.CharField(max_length=100, null=True, blank=False)
+    municipality = models.CharField(max_length=100, null=True, blank=False)
+    barangay = models.CharField(max_length=100, null=True, blank=False)
+    hs_num = models.CharField(max_length=100, null=True, blank=False)
+
+    full_name = models.CharField(max_length=100, null=True, blank=False)
+    card_number = models.CharField(max_length=100, null=True, blank=False)
+    mm = models.CharField(max_length=2, null=True, blank=False)
+    dd = models.CharField(max_length=2, null=True, blank=False)
+    yyyy = models.CharField(max_length=4, null=True, blank=False)
+    ccv = models.CharField(max_length=3, null=True, blank=False)
 
 class Product(models.Model):
     name = models.CharField(max_length=100, null=True, blank=False)
