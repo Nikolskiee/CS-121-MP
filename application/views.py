@@ -192,24 +192,29 @@ def checkout(request):
     return render(request, 'application/checkout.html',data)
 
 @login_required(login_url='/login')
-def checkout_cart(request):
-    subject = "MyShop Checkout Receipt"
-    message = "Good Day! <br><br> Below is your Order Payment Slip. Due to a limited workforce in this period of quarantine, there may be delays in the processing of orders. <br> Thank you for your understanding."
+def placeorder(request):
+    subject = "DVD-R Kween Receipt"
+    message = "Good Day! " + request.user.username + ", <br><br> Below is your Invoice Slip. Expect the package to be delivered at you after 7 working days. Thank you."
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [request.user.email]
-    #send_mail(subject, message, from_email, recipient_list)
-    
+
     email = EmailMessage(
-        subject,
+        subject, 
         message,
         from_email,
-        recipient_list,
+        recipient_list
     )
-    
-    email.content_subtype = 'html'
+
+
+
+    email.content_subtype = "html"
     pdf = generate_pdf(request).getvalue()
     email.attach("receipt.pdf", pdf, 'application/pdf')
-    #email.send()
+    email.send()
+
+    items = Cart.objects.filter(user = request.user).order_by('id')
+    for item in items:
+        item.delete()
 
     return redirect("/cart")
 
