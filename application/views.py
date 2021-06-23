@@ -143,7 +143,7 @@ def signup(request):
             subject = "Account Creation Confirmation"
             message = "Good Day!" + request.POST.get("username") + ", <br><br> This is to confirm that an your account was successfully created."
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = [request.POST.get("signupemail")]
+            recipient_list = [request.POST.get("email")]
 
             email = EmailMessage (
                 subject, 
