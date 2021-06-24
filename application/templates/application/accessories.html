@@ -8,7 +8,16 @@
         <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 pb-sm-0 pb-3" >
             <div class="bg-light border rounded-3 p-2 h-200">
                 <form method="get">
-                    {{ filter.form.as_p }}
+                    Brand: <br>
+                    {{ filter.form.brand }}<br><br>
+                    Type: <br>
+                    {{ filter.form.type }}<br><br>
+                    Color: <br>
+                    {{ filter.form.color }}<br><br>
+                    Weight (in grams):
+                    {{ filter.form.weight }}<br><br>
+                    Price (in php): <br>
+                    {{ filter.form.price }}<br><br>
                     <button class="btn" type="submit">Apply Filter</button>
                 </form>
             </div>

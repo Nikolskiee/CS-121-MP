@@ -54,4 +54,6 @@ class AccessoriesFilter(django_filters.FilterSet):
     type = django_filters.CharFilter(field_name='type', widget=forms.TextInput)
     color = django_filters.CharFilter(field_name='color', widget=forms.TextInput)
     weight = django_filters.CharFilter(field_name='weight', widget=forms.TextInput)
+    price = django_filters.RangeFilter()
+
 
