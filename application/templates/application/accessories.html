@@ -3,11 +3,11 @@
 
 {% block content %}
 <title>DVD-R Kween - Accessories</title>
-<main class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row p-5 overflow-auto">
-    <div class="row flex-grow-sm-1 flex-grow-0">
-        <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 pb-sm-0 pb-3" >
-            <div class="bg-light border rounded-3 p-2 h-200">
-                <form method="get">
+<main class="container-fluid pb-6 flex-grow-1 d-flex flex-column flex-sm-row p-5 overflow-auto">
+    <div class="row sm-6 flex-grow-sm-1 flex-grow-0 ">
+        <div class="col-sm-6 col-lg-3 col-md-4 pb-sm-0 flex-grow-sm-1 flex-shrink-1 flex-grow-0  pb-3"">
+            <div class="bg-light border rounded-6 p-3 h-200">
+                <form method="get"> 
                     Brand: <br>
                     {{ filter.form.brand }}<br><br>
                     Type: <br>
@@ -22,9 +22,8 @@
                 </form>
             </div>
         </div>
-        <div class="col overflow-auto h-100">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                
+        <div class ="col overflow-auto h-100">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
                 {% for accessory in filter.qs %}
                 <div class="col">
                     <div class="card h-100">
