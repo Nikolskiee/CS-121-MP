@@ -49,4 +49,9 @@ class PhoneFilter(django_filters.FilterSet):
     processor_brand = django_filters.MultipleChoiceFilter(field_name='processor_brand', choices=PROCESSOR_BRAND, widget=forms.CheckboxSelectMultiple)
     price = django_filters.RangeFilter()
 
+class AccessoriesFilter(django_filters.FilterSet):
+    brand = django_filters.CharFilter(field_name='brand', widget=forms.TextInput)
+    type = django_filters.CharFilter(field_name='type', widget=forms.TextInput)
+    color = django_filters.CharFilter(field_name='color', widget=forms.TextInput)
+    weight = django_filters.CharFilter(field_name='weight', widget=forms.TextInput)
 

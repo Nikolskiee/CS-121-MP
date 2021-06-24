@@ -5,108 +5,18 @@
 <title>DVD-R Kween - Accessories</title>
 <main class="container-fluid pb-3 flex-grow-1 d-flex flex-column flex-sm-row p-5 overflow-auto">
     <div class="row flex-grow-sm-1 flex-grow-0">
-        <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 pb-sm-0 pb-3" style="height: 10cm;">
+        <div class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 pb-sm-0 pb-3" >
             <div class="bg-light border rounded-3 p-2 h-200">
-                <h6 class="d-none d-sm-block text-muted">Type</h6>
-                <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Headphones
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Speakers
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        PC Accessories
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Mobile Accessories
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Virtual Reality
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Cables
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Wireless
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Other
-                        </label>
-                    </div>
-                </ul>
-                <h6 class="d-none d-sm-block text-muted">Brand</h6>
-                <ul class="nav nav-pills flex-sm-column p-1 flex-row mb-auto justify-content-between text-truncate">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Asus
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Apple
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Samsung
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Other
-                        </label>
-                    </div>
-                </ul>
-                <h6 class="d-none d-sm-block text-muted">Price</h6>
-                <div class="input-group mb-3 p-1 ">
-                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                    <span class="input-group-text">0.00</span>
-                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                    <button type="button" class="btn btn-outline-primary">Go</button>
-                </div>
+                <form method="get">
+                    {{ filter.form.as_p }}
+                    <button class="btn" type="submit">Apply Filter</button>
+                </form>
             </div>
         </div>
         <div class="col overflow-auto h-100">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                {% if accessories.count == 0 %}
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{% static 'application/files/logo/DVD-R_Kween_logo.png' %}" style="margin-top:5%" class="card-img-top" alt="...">
-                        <div class="card-body" style="text-align:center">
-                            <p>No products available for now. The admin will add some soon!</p>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                {% for accessory in accessories %}
+                
+                {% for accessory in filter.qs %}
                 <div class="col">
                     <div class="card h-100">
                         <img src="{{accessory.image.url}}" class="card-img-top" alt="...">
@@ -117,6 +27,17 @@
                     </div>
                 </div>
                 {% endfor %}
+
+                {% if filter.qs.count == 0 or accessories.count == 0 %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{% static 'application/files/logo/DVD-R_Kween_logo.png' %}" style="margin-top:5%" class="card-img-top" alt="...">
+                        <div class="card-body" style="text-align:center">
+                            <p>No products available for now. The admin will add some soon!</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>

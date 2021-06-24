@@ -1,4 +1,4 @@
-from application.filters import LaptopFilter, PhoneFilter
+from application.filters import LaptopFilter, PhoneFilter, AccessoriesFilter
 from django.http import response
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
@@ -39,7 +39,8 @@ def smartphones(request):
 
 def accessories(request):
     accessories = Accessories.objects.all()
-    data = { 'accessories' : accessories }
+    accessories_filter = AccessoriesFilter(request.GET, queryset=accessories)
+    data = { 'accessories' : accessories, 'filter' : accessories_filter }
     return render(request, 'application/accessories.html', data)
 
 @login_required(login_url='/login')
