@@ -112,7 +112,6 @@ def card(request):
     try:
         details = User_Details.objects.get(user=request.user)
         form1 = UserDetailsForm(instance=details)
-        details.payment_option = "Credit Card"
 
     except User_Details.DoesNotExist:
         form1 = UserDetailsForm({"user": request.user.id})
@@ -128,7 +127,6 @@ def card(request):
         try:
             details = User_Details.objects.get(user=request.user)
             form1 = UserDetailsForm(request.POST or None, instance=details)
-            details.payment_option = "Credit Card"
 
         except User_Details.DoesNotExist:
             form1 = UserDetailsForm(request.POST)
@@ -141,7 +139,9 @@ def card(request):
             form2 = CreditForm(request.POST)
         
         if(form1.is_valid() and form2.is_valid()):
-            form1.save()
+            details = form1.save(commit=False)
+            details.payment_option = "Credit Card"
+            details.save()
             form2.save()
 
             return redirect('/checkout')
@@ -154,7 +154,6 @@ def cod(request):
     try:
         details = User_Details.objects.get(user=request.user)
         form = UserDetailsForm(instance=details)
-        details.payment_option = "Cash On Delivery"
 
     except User_Details.DoesNotExist:
         form = UserDetailsForm({"user": request.user.id})
@@ -163,13 +162,14 @@ def cod(request):
         try:
             details = User_Details.objects.get(user=request.user)
             form = UserDetailsForm(request.POST or None, instance=details)
-            details.payment_option = "Cash On Delivery"
 
         except User_Details.DoesNotExist:
             form = UserDetailsForm(request.POST or None)
         
         if(form.is_valid()):
-            form.save()
+            details = form.save(commit=False)
+            details.payment_option = "Cash on Delivery"
+            details.save()
             return redirect('/checkout')
 
     data = {"form": form}
